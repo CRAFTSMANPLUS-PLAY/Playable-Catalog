@@ -501,7 +501,7 @@
       gamingSection.style.display = (genreSelect.value === 'brand') ? 'none' : '';
 
       for(const item of brand) brandGrid.appendChild(makeTile(item));
-      for(const item of gaming) gamingGrid.appendChild(makeTile(item));
+      for(const item of gaming) gamingGrid.appendChild();
     }
 
     function makeTile(item){
@@ -511,16 +511,23 @@
       const header = document.createElement('div');
       header.className = 'tileHeader';
 
+      const textWrap = document.createElement('div');
+      textWrap.style.display = 'flex';
+      textWrap.style.flexDirection = 'column';
+      textWrap.style.gap = '4px';
+      
       const company = document.createElement('div');
       company.className = 'company';
       company.textContent = getCompany(item) || '—';
-
+      
       const title = document.createElement('div');
       title.className = 'title';
       title.textContent = getTitle(item) || '—';
-
-      header.appendChild(company);
-      header.appendChild(title);
+      
+      textWrap.appendChild(company);
+      textWrap.appendChild(title);
+      
+      header.appendChild(textWrap);
 
       const buttons = document.createElement('div');
       buttons.className = 'tileButtons';
@@ -529,7 +536,7 @@
       btnExternal.className = 'btn primary';
       btnExternal.textContent = 'Open External';
 
-      buttons.appendChild(btnExternal);
+      header.appendChild(btnExternal);
 
       const thumbWrap = document.createElement('div');
       thumbWrap.className = 'thumbWrap';
