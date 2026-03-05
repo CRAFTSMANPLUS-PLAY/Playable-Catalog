@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Playable Catalog</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f0f10;
+color:white;
+margin:0;
+padding:30px;
+}
+
+header{
+display:flex;
+gap:15px;
+margin-bottom:30px;
+}
+
+select{
+padding:8px;
+border-radius:6px;
+border:none;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.tile{
+background:#1a1a1c;
+border-radius:12px;
+cursor:pointer;
+overflow:hidden;
+position:relative;
+transition:transform .2s;
+}
+
+.tile:hover{
+transform:scale(1.03);
+}
+
+.tile img{
+width:100%;
+display:block;
+}
+
+.tile-info{
+padding:10px;
+}
+
+.overlay{
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(0,0,0,.6);
+opacity:0;
+transition:.2s;
+font-weight:bold;
+}
+
+.tile:hover .overlay{
+opacity:1;
+}
+
+.modal{
+position:fixed;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:rgba(0,0,0,.8);
+display:none;
+align-items:center;
+justify-content:center;
+}
+
+.modal-content{
+background:#1a1a1c;
+padding:20px;
+border-radius:12px;
+text-align:center;
+}
+
+iframe{
+width:442px;
+height:880px;
+border:none;
+background:black;
+}
+
+button{
+background:#f86400;
+border:none;
+color:white;
+padding:8px 14px;
+margin:10px;
+border-radius:6px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<select id="genreFilter">
+<option value="All">Genre</option>
+<option value="Brand">Brand</option>
+<option value="Gaming">Gaming</option>
+</select>
+
+<select id="companyFilter">
+<option value="All">Company</option>
+</select>
+
+</header>
+
+<div class="grid" id="grid"></div>
+
+<div class="modal" id="modal">
+
+<div class="modal-content">
+
+<h2 id="modalTitle"></h2>
+
+<button id="reloadBtn">Reload</button>
+<button id="externalBtn">Open External</button>
+
+<br><br>
+
+<iframe id="playFrame"></iframe>
+
+</div>
+
+</div>
+
+<script>
+
+let data=[]
+let frame=document.getElementById("playFrame")
+let modal=document.getElementById("modal")
+
+fetch("Playable_Endpoint_URLs.json")
+.then(res=>res.json())
+.then(json=>{
+data=json
+populateCompanies()
+render()
+})
+
+function populateCompanies(){
+
+let companies=[...new Set(data.map(d=>d.Company))]
+let select=document.getElementById("companyFilter")
+
+companies.forEach(c=>{
+let o=document.createElement("option")
+o.value=c
+o.textContent=c
+select.appendChild(o)
+})
+
+}
+
+function render(){
+
+let genre=document.getElementById("genreFilter").value
+let company=document.getElementById("companyFilter").value
+
+let filtered=data.filter(d=>
+
+(genre==="All"||d.Genre===genre)&&
+(company==="All"||d.Company===company)
+
+)
+
+let grid=document.getElementById("grid")
+grid.innerHTML=""
+
+filtered.forEach(item=>{
+
+let tile=document.createElement("div")
+tile.className="tile"
+
+tile.innerHTML=`
+
+<img src="thumbnails/${item.thumbnail}">
+
+<div class="overlay">Click to Play</div>
+
+<div class="tile-info">
+<b>${item.Title}</b><br>
+${item.Company}
+</div>
+
+`
+
+tile.onclick=()=>openPlayable(item)
+
+grid.appendChild(tile)
+
+})
+
+}
+
+function openPlayable(item){
+
+document.getElementById("modalTitle").innerText=
+item.Title+" – "+item.Company
+
+frame.src=item["Endpoint URL"]
+
+document.getElementById("externalBtn").onclick=()=>{
+window.open(item.URL)
+}
+
+document.getElementById("reloadBtn").onclick=()=>{
+frame.src=item["Endpoint URL"]
+}
+
+modal.style.display="flex"
+
+}
+
+modal.onclick=e=>{
+if(e.target===modal){
+modal.style.display="none"
+frame.src=""
+}
+}
+
+document.getElementById("genreFilter").onchange=render
+document.getElementById("companyFilter").onchange=render
+
+</script>
+
+</body>
+</html>
