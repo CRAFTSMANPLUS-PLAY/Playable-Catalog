@@ -7,556 +7,639 @@
 
   <style>
     :root{
-      --bg:#0b0c0e;
-      --panel:#121317;
-      --panel2:#0f1013;
-      --border:rgba(255,255,255,.08);
+      --bg:#0b0c0d;
+      --panel:#111214;
+      --tile:#141518;
+      --tileBorder: rgba(255,255,255,.10);
       --text:#fff;
-      --muted:rgba(255,255,255,.65);
-      --muted2:rgba(255,255,255,.45);
-      --orange:#f86400;
-      --radius:14px;
+      --muted: rgba(255,255,255,.55);
+      --muted2: rgba(255,255,255,.35);
+      --orange:#ff6a00;
+      --orange2:#ff7a1a;
+      --radius: 16px;
     }
-    *{box-sizing:border-box}
+    *{ box-sizing:border-box; }
     body{
       margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family:-apple-system,BlinkMacSystemFont,"Inter",Roboto,Arial,sans-serif;
+      background: radial-gradient(1200px 600px at 50% -50%, rgba(255,106,0,.18), transparent 60%),
+                  radial-gradient(900px 500px at 15% -40%, rgba(255,255,255,.08), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", Roboto, sans-serif;
+      min-height: 100vh;
     }
 
-    /* TOP BAR (match screenshot: left logo, center search, right filters) */
+    /* TOP BAR (match screenshot vibe) */
     .topbar{
-      position:sticky;
+      position: sticky;
       top:0;
       z-index:10;
-      background:linear-gradient(to bottom, rgba(0,0,0,.75), rgba(0,0,0,.35));
-      backdrop-filter: blur(10px);
-      border-bottom:1px solid rgba(255,255,255,.06);
-      padding:14px 18px;
+      height: 72px;
       display:flex;
       align-items:center;
       gap:16px;
+      padding: 0 22px;
+      background: rgba(10,10,10,.82);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
     .brand{
-      font-weight:800;
-      letter-spacing:.08em;
-      font-size:14px;
-      white-space:nowrap;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 220px;
     }
-    .brand .plus{ color:var(--orange); }
+    .brand .logo{
+      font-weight: 800;
+      letter-spacing: .12em;
+      font-size: 16px;
+    }
+    .brand .logo .plus{
+      color: var(--orange);
+      margin-left: 2px;
+    }
 
-    .topbar-center{
-      flex:1;
+    .searchwrap{
+      flex: 1;
       display:flex;
       justify-content:center;
     }
     .search{
-      width:min(720px, 100%);
-      display:flex;
-      align-items:center;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:12px;
-      padding:10px 12px;
-      gap:8px;
+      width: min(720px, 100%);
+      position: relative;
     }
     .search input{
       width:100%;
-      background:transparent;
-      border:none;
-      outline:none;
-      color:var(--text);
-      font-size:14px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      padding: 0 14px;
+      font-size: 14px;
+      outline: none;
     }
-    .search input::placeholder{ color:rgba(255,255,255,.35); }
+    .search input::placeholder{ color: rgba(255,255,255,.35); }
 
-    .topbar-right{
+    .filters{
       display:flex;
       align-items:center;
       gap:10px;
-      white-space:nowrap;
+      min-width: 360px;
+      justify-content:flex-end;
     }
-
-    .control{
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      color:var(--text);
-      border-radius:10px;
-      padding:10px 10px;
-      font-size:13px;
-      outline:none;
-      height:40px;
+    .select, .companySelect{
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      padding: 0 12px;
+      font-size: 14px;
+      outline: none;
+      cursor: pointer;
     }
-    select.control{
-      padding-right:34px;
-      cursor:pointer;
+    .companySelect{
+      width: 220px;
     }
-
-    /* Datalist input (company searchable dropdown) */
-    .control.company{
-      width:220px;
-    }
-
-    /* PAGE WRAP */
-    .wrap{
-      padding:26px 18px 60px;
-      max-width:1400px;
-      margin:0 auto;
+    .select{
+      width: 120px;
     }
 
     /* SECTION HEADERS */
-    .section{
-      margin-top:34px;
+    .content{
+      padding: 28px 22px 42px;
     }
-    .section h2{
-      margin:0 0 16px;
-      font-size:13px;
-      letter-spacing:.2em;
-      color:var(--muted2);
-      font-weight:700;
-      text-transform:uppercase;
+    .sectionTitle{
+      margin: 26px 0 14px;
+      font-size: 12px;
+      letter-spacing: .22em;
+      color: rgba(255,255,255,.35);
+      text-transform: uppercase;
     }
 
-    /* GRID 4 ACROSS */
+    /* GRID */
     .grid{
       display:grid;
-      grid-template-columns:repeat(4, minmax(0, 1fr));
-      gap:18px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
     }
-    @media (max-width:1100px){
-      .grid{ grid-template-columns:repeat(3, minmax(0, 1fr)); }
+    @media (max-width: 1300px){
+      .grid{ grid-template-columns: repeat(3, minmax(0,1fr)); }
     }
-    @media (max-width:820px){
-      .grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
-      .topbar{ flex-wrap:wrap; }
-      .topbar-center{ width:100%; order:3; }
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .filters{ min-width: unset; }
+      .brand{ min-width: unset; }
+    }
+    @media (max-width: 640px){
+      .grid{ grid-template-columns: repeat(1, minmax(0,1fr)); }
+      .companySelect{ width: 160px; }
     }
 
-    /* TILE CARD */
+    /* TILE */
     .tile{
-      background:linear-gradient(to bottom, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.07);
-      border-radius:14px;
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
       overflow:hidden;
-      position:relative;
-      cursor:pointer;
-      transition:transform .18s ease, border-color .18s ease;
-      min-height:280px;
+      position: relative;
+      min-height: 460px; /* slightly larger than your 200x400 feel */
+      box-shadow: 0 30px 90px rgba(0,0,0,.35);
+      transition: transform .15s ease, border-color .15s ease;
     }
     .tile:hover{
-      transform:translateY(-2px);
-      border-color:rgba(248,100,0,.35);
+      transform: translateY(-2px);
+      border-color: rgba(255,106,0,.55);
     }
-    .thumb{
-      width:100%;
-      height:180px;
-      object-fit:cover;
-      display:block;
-      background:#0a0a0a;
-    }
-    .tile-body{
-      padding:12px 14px 14px;
+    .tileHeader{
+      padding: 14px 16px 10px;
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      position: relative;
+      z-index: 2;
     }
     .company{
-      font-weight:700;
-      font-size:14px;
-      margin:0 0 2px;
+      font-weight: 700;
+      font-size: 14px;
+      color: rgba(255,255,255,.90);
+      line-height: 1.1;
     }
     .title{
-      margin:0;
-      font-size:12.5px;
-      color:var(--muted);
+      font-size: 13px;
+      color: rgba(255,255,255,.55);
+      line-height: 1.1;
     }
-    .tile-actions{
+
+    .tileButtons{
+      padding: 0 16px 12px;
       display:flex;
       gap:10px;
-      margin-top:12px;
+      position: relative;
+      z-index: 2;
     }
     .btn{
-      border-radius:8px;
-      font-size:12px;
-      padding:8px 10px;
+      height: 30px;
+      padding: 0 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,106,0,.6);
+      background: transparent;
+      color: var(--orange);
+      font-size: 12px;
       cursor:pointer;
-      border:1px solid rgba(248,100,0,.55);
-      background:transparent;
-      color:var(--orange);
     }
     .btn.primary{
-      background:var(--orange);
-      border-color:transparent;
-      color:#fff;
+      background: var(--orange);
+      color:#111;
+      border-color: transparent;
+      font-weight: 700;
     }
-    .btn:active{ transform:translateY(1px); }
+    .btn:hover{
+      filter: brightness(1.05);
+    }
 
-    /* CLICK TO PLAY OVERLAY */
-    .overlay{
+    .thumbWrap{
+      position:absolute;
+      inset: 0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index: 1;
+    }
+    .thumbImg{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .72;
+      filter: contrast(1.05) brightness(.85);
+      transform: scale(1.02);
+    }
+    .thumbOverlay{
+      position:absolute;
+      inset:0;
+      background: radial-gradient(600px 380px at 50% 35%, rgba(255,255,255,.06), transparent 62%),
+                  linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.70));
+    }
+
+    .clickToPlay{
       position:absolute;
       inset:0;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-weight:800;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-size:12px;
-      background:rgba(0,0,0,.55);
-      opacity:0;
-      transition:opacity .18s ease;
+      z-index: 3;
+      color: rgba(255,255,255,.85);
+      font-weight: 800;
+      letter-spacing: .12em;
+      font-size: 12px;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity .15s ease;
+      pointer-events:none;
     }
-    .tile:hover .overlay{ opacity:1; }
+    .tile:hover .clickToPlay{
+      opacity: 1;
+    }
 
     /* MODAL */
-    .modal{
-      position:fixed;
+    .modalBackdrop{
+      position: fixed;
       inset:0;
+      background: rgba(0,0,0,.62);
+      backdrop-filter: blur(4px);
       display:none;
       align-items:center;
       justify-content:center;
-      background:rgba(0,0,0,.72);
-      z-index:50;
-      padding:22px;
+      z-index: 100;
+      padding: 20px;
     }
-    .modal-card{
-      background:rgba(18,19,23,.95);
-      border:1px solid rgba(255,255,255,.09);
-      border-radius:16px;
-      padding:16px;
-      width:min(520px, 95vw);
-      box-shadow:0 12px 70px rgba(0,0,0,.55);
+    .modal{
+      width: min(560px, 96vw);
+      background: rgba(20,21,24,.96);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 18px;
+      box-shadow: 0 40px 140px rgba(0,0,0,.55);
+      overflow:hidden;
+      position: relative;
     }
-    .modal-title{
-      font-size:22px;
-      font-weight:800;
-      margin:4px 0 12px;
+    .modalTop{
+      padding: 14px 16px 10px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:center;
       text-align:center;
     }
-    .modal-actions{
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      margin-bottom:12px;
+    .modalTitle{
+      font-size: 22px;
+      font-weight: 800;
+      color: rgba(255,255,255,.92);
     }
-    .modal-actions .btn{
-      border-radius:10px;
-      padding:10px 14px;
+    .modalActions{
+      display:flex;
+      gap:10px;
+      justify-content:center;
     }
 
-    /* FIXED IFRAME SIZE (your request) */
-    .frame-wrap{
-      width:200px;
-      height:400px;
-      margin:0 auto;
-      border-radius:14px;
+    .modalBody{
+      padding: 10px 16px 18px;
+      display:flex;
+      justify-content:center;
+    }
+
+    /* PREVIEW (requested: 9:16 portrait, width 350px) */
+    .previewFrameWrap{
+      width: 350px;
+      height: 622px; /* 350 * 16/9 */
+      border-radius: 18px;
       overflow:hidden;
-      border:1px solid rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
       background:#000;
     }
-    iframe{
+    .previewFrameWrap iframe{
       width:100%;
       height:100%;
       border:0;
-      background:#000;
       display:block;
-    }
-    .modal-note{
-      text-align:center;
-      color:var(--muted2);
-      font-size:12px;
-      margin-top:10px;
+      background:#000;
     }
 
-    /* small close hint */
-    .close-hint{
+    .hint{
+      margin-top: 10px;
+      color: rgba(255,255,255,.45);
+      font-size: 12px;
+      padding: 0 18px 16px;
       text-align:center;
-      margin-top:10px;
-      color:rgba(255,255,255,.35);
-      font-size:12px;
     }
   </style>
 </head>
 
 <body>
   <div class="topbar">
-    <div class="brand">CRAFTSMAN<span class="plus">+</span></div>
+    <div class="brand">
+      <div class="logo">CRAFTSMAN<span class="plus">+</span></div>
+    </div>
 
-    <div class="topbar-center">
-      <div class="search" title="Search by title/company">
+    <div class="searchwrap">
+      <div class="search">
         <input id="searchInput" type="text" placeholder="Search playable catalog..." />
       </div>
     </div>
 
-    <div class="topbar-right">
-      <select id="genreFilter" class="control" aria-label="Genre">
-        <option value="All">All</option>
-        <option value="Brand">Brand</option>
-        <option value="Gaming">Gaming</option>
+    <div class="filters">
+      <select id="genreSelect" class="select" aria-label="Genre">
+        <option value="all">All</option>
+        <option value="brand">Brand</option>
+        <option value="gaming">Gaming</option>
       </select>
 
-      <input id="companyFilter" class="control company" list="companyList" placeholder="Company" aria-label="Company" />
-      <datalist id="companyList"></datalist>
+      <select id="companySelect" class="companySelect" aria-label="Company">
+        <option value="">Company</option>
+      </select>
     </div>
   </div>
 
-  <div class="wrap">
-    <div id="content"></div>
+  <div class="content">
+    <div id="brandSection">
+      <div class="sectionTitle">Brand</div>
+      <div id="brandGrid" class="grid"></div>
+    </div>
+
+    <div id="gamingSection">
+      <div class="sectionTitle">Gaming</div>
+      <div id="gamingGrid" class="grid"></div>
+    </div>
   </div>
 
   <!-- MODAL -->
-  <div id="modal" class="modal" role="dialog" aria-modal="true">
-    <div class="modal-card" id="modalCard">
-      <div class="modal-title" id="modalTitle">Title – Company</div>
-
-      <div class="modal-actions">
-        <button class="btn" id="reloadBtn">Reload</button>
-        <button class="btn primary" id="externalBtn">Open External</button>
+  <div id="modalBackdrop" class="modalBackdrop" role="dialog" aria-modal="true">
+    <div class="modal" id="modal">
+      <div class="modalTop">
+        <div class="modalTitle" id="modalTitle">—</div>
+        <div class="modalActions">
+          <button class="btn" id="modalReload">Reload</button>
+          <button class="btn primary" id="modalExternal">Open External</button>
+        </div>
       </div>
-
-      <div class="frame-wrap">
-        <iframe id="playFrame" src=""></iframe>
+      <div class="modalBody">
+        <div class="previewFrameWrap">
+          <iframe id="modalFrame" src=""></iframe>
+        </div>
       </div>
-
-      <div class="modal-note" id="modalNote"></div>
-      <div class="close-hint">Click outside to close</div>
+      <div class="hint" id="modalHint"></div>
     </div>
   </div>
 
   <script>
-    const ORANGE = "#f86400";
+    const JSON_PATH = 'Playable_Endpoint_URLs.json';
+    const THUMB_BASE = 'thumbnails/'; // <-- your folder (relative)
 
-    const contentEl = document.getElementById("content");
-    const searchEl = document.getElementById("searchInput");
-    const genreEl = document.getElementById("genreFilter");
-    const companyEl = document.getElementById("companyFilter");
-    const companyListEl = document.getElementById("companyList");
+    const searchInput = document.getElementById('searchInput');
+    const genreSelect = document.getElementById('genreSelect');
+    const companySelect = document.getElementById('companySelect');
 
-    const modalEl = document.getElementById("modal");
-    const modalCardEl = document.getElementById("modalCard");
-    const modalTitleEl = document.getElementById("modalTitle");
-    const modalNoteEl = document.getElementById("modalNote");
-    const frameEl = document.getElementById("playFrame");
-    const reloadBtn = document.getElementById("reloadBtn");
-    const externalBtn = document.getElementById("externalBtn");
+    const brandGrid = document.getElementById('brandGrid');
+    const gamingGrid = document.getElementById('gamingGrid');
+    const brandSection = document.getElementById('brandSection');
+    const gamingSection = document.getElementById('gamingSection');
 
-    let data = [];
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalFrame = document.getElementById('modalFrame');
+    const modalReload = document.getElementById('modalReload');
+    const modalExternal = document.getElementById('modalExternal');
+    const modalHint = document.getElementById('modalHint');
 
-    function norm(s){ return (s || "").toString().trim(); }
-    function lower(s){ return norm(s).toLowerCase(); }
+    let allItems = [];
+    let filteredItems = [];
+    let currentModalItem = null;
 
+    function norm(str){ return (str || '').toString().trim(); }
+    function lower(str){ return norm(str).toLowerCase(); }
+
+    function getEndpoint(item){
+      return norm(item['Endpoint URL'] || item.Endpoint || item.endpoint || item.endpoint_url);
+    }
+    function getExternal(item){
+      return norm(item.URL || item.Url || item.link || item.preview || item.Preview);
+    }
     function getThumb(item){
-      const t = norm(item.thumbnail);
-      if (!t) return "";
-      return "thumbnails/" + t;
+      // Accept either "thumbnail": "foo.png" or "thumbnail": "thumbnails/foo.png"
+      let t = norm(item.thumbnail || item.Thumbnail);
+      if (!t) return '';
+      // If the json already contains the folder, keep it. Otherwise prepend.
+      if (t.startsWith('thumbnails/')) return t;
+      return THUMB_BASE + t;
     }
 
-    function isValidEndpoint(url){
-      // endpoint should look like ".../index.html"
-      const u = norm(url);
-      return u && u.includes("index.html");
+    function getCompany(item){
+      return norm(item.Company || item.company || item['Company Name'] || item.Client || '');
+    }
+    function getTitle(item){
+      return norm(item.Title || item.title || item['Playable Title'] || '');
+    }
+    function getGenre(item){
+      // Expecting only "brand" or "gaming"
+      return lower(item.Genre);
     }
 
-    function buildCompanyOptions(items){
-      const companies = [...new Set(items.map(i => norm(i.Company)).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
-      companyListEl.innerHTML = "";
-      companies.forEach(c => {
-        const opt = document.createElement("option");
+    async function loadData(){
+      const r = await fetch(JSON_PATH + '?_=' + Date.now());
+      if(!r.ok) throw new Error('Could not load JSON: ' + JSON_PATH);
+      allItems = await r.json();
+
+      // Normalize + keep only brand/gaming
+      allItems = allItems
+        .map(x => ({
+          ...x,
+          Genre: lower(x.Genre) === 'brand' ? 'brand' : (lower(x.Genre) === 'gaming' ? 'gaming' : lower(x.Genre))
+        }))
+        .filter(x => x.Genre === 'brand' || x.Genre === 'gaming');
+
+      buildCompanyDropdown(allItems);
+      applyFilters();
+    }
+
+    function buildCompanyDropdown(items){
+      const companies = Array.from(new Set(items.map(getCompany).filter(Boolean)))
+        .sort((a,b) => a.localeCompare(b));
+
+      companySelect.innerHTML = '<option value="">Company</option>';
+      for(const c of companies){
+        const opt = document.createElement('option');
         opt.value = c;
-        companyListEl.appendChild(opt);
-      });
+        opt.textContent = c;
+        companySelect.appendChild(opt);
+      }
     }
 
-    function filteredItems(){
-      const q = lower(searchEl.value);
-      const genre = genreEl.value;
-      const company = norm(companyEl.value);
+    function applyFilters(){
+      const q = lower(searchInput.value);
+      const g = genreSelect.value; // all | brand | gaming
+      const c = norm(companySelect.value);
 
-      return data.filter(item => {
-        const title = lower(item.Title);
-        const comp  = lower(item.Company);
-        const g     = norm(item.Genre);
+      filteredItems = allItems.filter(item => {
+        const matchesText =
+          !q ||
+          lower(getTitle(item)).includes(q) ||
+          lower(getCompany(item)).includes(q);
 
-        const matchSearch = !q || title.includes(q) || comp.includes(q) || lower(g).includes(q);
-        const matchGenre  = (genre === "All") || (g === genre);
-        const matchCompany= (!company) || (norm(item.Company) === company);
+        const matchesGenre =
+          g === 'all' || getGenre(item) === g;
 
-        return matchSearch && matchGenre && matchCompany;
+        const matchesCompany =
+          !c || getCompany(item) === c;
+
+        return matchesText && matchesGenre && matchesCompany;
       });
+
+      render();
     }
 
     function render(){
-      const items = filteredItems();
+      // Clear
+      brandGrid.innerHTML = '';
+      gamingGrid.innerHTML = '';
 
-      // group only into Brand / Gaming sections (per your request)
-      const groups = {
-        Brand: items.filter(i => norm(i.Genre) === "Brand"),
-        Gaming: items.filter(i => norm(i.Genre) === "Gaming")
+      const brand = filteredItems.filter(x => getGenre(x) === 'brand');
+      const gaming = filteredItems.filter(x => getGenre(x) === 'gaming');
+
+      brandSection.style.display = (genreSelect.value === 'gaming') ? 'none' : '';
+      gamingSection.style.display = (genreSelect.value === 'brand') ? 'none' : '';
+
+      for(const item of brand) brandGrid.appendChild(makeTile(item));
+      for(const item of gaming) gamingGrid.appendChild(makeTile(item));
+    }
+
+    function makeTile(item){
+      const tile = document.createElement('div');
+      tile.className = 'tile';
+
+      const header = document.createElement('div');
+      header.className = 'tileHeader';
+
+      const company = document.createElement('div');
+      company.className = 'company';
+      company.textContent = getCompany(item) || '—';
+
+      const title = document.createElement('div');
+      title.className = 'title';
+      title.textContent = getTitle(item) || '—';
+
+      header.appendChild(company);
+      header.appendChild(title);
+
+      const buttons = document.createElement('div');
+      buttons.className = 'tileButtons';
+
+      const btnReload = document.createElement('button');
+      btnReload.className = 'btn';
+      btnReload.textContent = 'Reload';
+
+      const btnExternal = document.createElement('button');
+      btnExternal.className = 'btn primary';
+      btnExternal.textContent = 'Open External';
+
+      buttons.appendChild(btnReload);
+      buttons.appendChild(btnExternal);
+
+      const thumbWrap = document.createElement('div');
+      thumbWrap.className = 'thumbWrap';
+
+      const img = document.createElement('img');
+      img.className = 'thumbImg';
+      const thumb = getThumb(item);
+      img.src = thumb || '';
+      img.alt = (getTitle(item) || 'Playable') + ' thumbnail';
+      img.loading = 'lazy';
+      img.onerror = () => {
+        // keep it dark, but don’t show broken icon
+        img.style.display = 'none';
       };
 
-      contentEl.innerHTML = "";
+      const overlay = document.createElement('div');
+      overlay.className = 'thumbOverlay';
 
-      ["Brand","Gaming"].forEach(sectionName => {
-        const sectionItems = groups[sectionName];
-        if (!sectionItems.length) return;
+      thumbWrap.appendChild(img);
+      thumbWrap.appendChild(overlay);
 
-        const section = document.createElement("div");
-        section.className = "section";
+      const ctp = document.createElement('div');
+      ctp.className = 'clickToPlay';
+      ctp.textContent = 'CLICK TO PLAY';
 
-        const h2 = document.createElement("h2");
-        h2.textContent = sectionName;
-        section.appendChild(h2);
+      tile.appendChild(header);
+      tile.appendChild(buttons);
+      tile.appendChild(thumbWrap);
+      tile.appendChild(ctp);
 
-        const grid = document.createElement("div");
-        grid.className = "grid";
-
-        sectionItems.forEach(item => {
-          const tile = document.createElement("div");
-          tile.className = "tile";
-
-          const thumb = document.createElement("img");
-          thumb.className = "thumb";
-          const src = getThumb(item);
-          if (src) thumb.src = src;
-          thumb.alt = `${norm(item.Title)} thumbnail`;
-          thumb.onerror = () => { thumb.style.display = "none"; };
-
-          const overlay = document.createElement("div");
-          overlay.className = "overlay";
-          overlay.textContent = "Click to Play";
-
-          const body = document.createElement("div");
-          body.className = "tile-body";
-
-          const company = document.createElement("p");
-          company.className = "company";
-          company.textContent = norm(item.Company) || "Unknown Company";
-
-          const title = document.createElement("p");
-          title.className = "title";
-          title.textContent = norm(item.Title) || "Untitled";
-
-          const actions = document.createElement("div");
-          actions.className = "tile-actions";
-
-          const reload = document.createElement("button");
-          reload.className = "btn";
-          reload.textContent = "Reload";
-
-          const external = document.createElement("button");
-          external.className = "btn primary";
-          external.textContent = "Open External";
-
-          // IMPORTANT: prevent action buttons from also opening modal click
-          reload.addEventListener("click", (e) => {
-            e.stopPropagation();
-            // "Reload" on tile just opens modal and reloads once (useful UX)
-            openModal(item, true);
-          });
-
-          external.addEventListener("click", (e) => {
-            e.stopPropagation();
-            const previewUrl = norm(item.URL);
-            if (previewUrl) window.open(previewUrl, "_blank");
-          });
-
-          actions.appendChild(reload);
-          actions.appendChild(external);
-
-          body.appendChild(company);
-          body.appendChild(title);
-          body.appendChild(actions);
-
-          tile.appendChild(thumb);
-          tile.appendChild(overlay);
-          tile.appendChild(body);
-
-          tile.addEventListener("click", () => openModal(item, false));
-
-          grid.appendChild(tile);
-        });
-
-        section.appendChild(grid);
-        contentEl.appendChild(section);
+      // Click tile => open modal (endpoint)
+      tile.addEventListener('click', (e) => {
+        // ignore button clicks (handled separately)
+        const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+        if (tag === 'button') return;
+        openModal(item);
       });
+
+      // Reload (tile) => reload endpoint in modal if open, or just no-op
+      btnReload.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // If modal is open on this same item, reload it.
+        if (currentModalItem && currentModalItem === item) reloadModalFrame();
+      });
+
+      // External => open preview link
+      btnExternal.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const ext = getExternal(item);
+        if (ext) window.open(ext, '_blank');
+      });
+
+      return tile;
     }
 
-    function openModal(item, forceReload){
-      const title = norm(item.Title);
-      const company = norm(item.Company);
-      const endpoint = item["Endpoint URL"]; // exact key
-      const previewUrl = norm(item.URL);
+    function openModal(item){
+      currentModalItem = item;
+      modalTitle.textContent = `${getTitle(item) || 'Playable'} – ${getCompany(item) || ''}`.trim();
 
-      modalTitleEl.textContent = `${title || "Untitled"} – ${company || "Company"}`;
-      modalNoteEl.textContent = "";
+      const endpoint = getEndpoint(item);
+      const external = getExternal(item);
 
-      // External always goes to Preview URL (per your instruction)
-      externalBtn.onclick = () => {
-        if (previewUrl) window.open(previewUrl, "_blank");
-      };
+      modalHint.textContent = '';
 
-      // Reload cache-busts endpoint
-      reloadBtn.onclick = () => {
-        if (!isValidEndpoint(endpoint)) return;
-        const base = norm(endpoint);
-        const bust = (base.includes("?") ? "&" : "?") + "_=" + Date.now();
-        frameEl.src = base + bust;
-      };
-
-      // Load playable from Endpoint URL (must be HTML)
-      if (!isValidEndpoint(endpoint)){
-        frameEl.src = "about:blank";
-        modalNoteEl.textContent =
-          "This item’s Endpoint URL is missing or not an index.html (it’s likely why you’re seeing JSON). Update the JSON to point to the HTML index.html endpoint.";
+      if (!endpoint){
+        modalFrame.src = 'about:blank';
+        modalHint.textContent = 'Missing Endpoint URL in JSON. Add an "Endpoint URL" value for this item.';
       } else {
-        const base = norm(endpoint);
-        const url = forceReload ? (base + (base.includes("?") ? "&" : "?") + "_=" + Date.now()) : base;
-        frameEl.src = url;
+        modalFrame.src = bust(endpoint);
       }
 
-      modalEl.style.display = "flex";
+      modalExternal.onclick = () => {
+        if (external) window.open(external, '_blank');
+      };
+      modalReload.onclick = () => reloadModalFrame();
+
+      modalBackdrop.style.display = 'flex';
     }
 
-    function closeModal(){
-      modalEl.style.display = "none";
-      frameEl.src = "about:blank";
-      modalNoteEl.textContent = "";
+    function reloadModalFrame(){
+      if (!currentModalItem) return;
+      const endpoint = getEndpoint(currentModalItem);
+      if (!endpoint) return;
+      modalFrame.src = bust(endpoint);
     }
 
-    // click outside closes
-    modalEl.addEventListener("click", (e) => {
-      if (e.target === modalEl) closeModal();
-    });
+    function bust(url){
+      const join = url.includes('?') ? '&' : '?';
+      return url + join + '_=' + Date.now();
+    }
 
-    // ESC closes
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modalEl.style.display === "flex") closeModal();
-    });
-
-    // filters
-    searchEl.addEventListener("input", render);
-    genreEl.addEventListener("change", render);
-    companyEl.addEventListener("input", render);
-
-    async function init(){
-      try{
-        const r = await fetch("Playable_Endpoint_URLs.json?_=" + Date.now());
-        if (!r.ok) throw new Error("Playable_Endpoint_URLs.json not found");
-        data = await r.json();
-
-        // If your JSON currently doesn’t have Company, but has "title/subtitle" etc, stop here and tell me.
-        // This page expects: Title, Company, Genre, URL, Endpoint URL, thumbnail
-
-        buildCompanyOptions(data);
-        render();
-      }catch(err){
-        contentEl.innerHTML = `<div style="padding:18px;color:#ffb3b3">
-          <b>Error loading JSON:</b> ${err.message}<br/>
-          Ensure <code>Playable_Endpoint_URLs.json</code> is in the repo root and valid JSON.
-        </div>`;
-        console.error(err);
+    // Close modal on backdrop click
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop){
+        modalBackdrop.style.display = 'none';
+        modalFrame.src = 'about:blank';
+        currentModalItem = null;
       }
-    }
+    });
 
-    init();
+    // ESC closes modal
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modalBackdrop.style.display === 'flex'){
+        modalBackdrop.style.display = 'none';
+        modalFrame.src = 'about:blank';
+        currentModalItem = null;
+      }
+    });
+
+    searchInput.addEventListener('input', applyFilters);
+    genreSelect.addEventListener('change', applyFilters);
+    companySelect.addEventListener('change', applyFilters);
+
+    loadData().catch(err => {
+      console.error(err);
+      brandGrid.innerHTML = `<div style="padding:16px;color:#ff6a00;">${err.message}</div>`;
+    });
   </script>
 </body>
 </html>
