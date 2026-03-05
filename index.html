@@ -162,6 +162,34 @@
   position:relative;
   z-index:2;
 }
+
+.tileText{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.tileExternal{
+  height:32px;
+  padding:0 14px;
+  border-radius:16px;
+  border:none;
+  background:var(--orange);
+  color:#111;
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  white-space:nowrap;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+
+.tileExternal:hover{
+  transform:translateY(-1px);
+  box-shadow:0 6px 20px rgba(255,106,0,.35);
+}
     .company{
       font-weight: 700;
       font-size: 14px;
@@ -172,14 +200,6 @@
       font-size: 13px;
       color: rgba(255,255,255,.55);
       line-height: 1.1;
-    }
-
-    .tileButtons{
-      padding: 0 16px 8px 16px;
-      display:flex;
-      gap:10px;
-      position: relative;
-      z-index: 2;
     }
     .btn{
       height: 30px;
@@ -522,89 +542,75 @@
     }
 
     function makeTile(item){
-      const tile = document.createElement('div');
-      tile.className = 'tile';
+  const tile = document.createElement('div');
+  tile.className = 'tile';
 
-      const header = document.createElement('div');
-      header.className = 'tileHeader';
+  const header = document.createElement('div');
+  header.className = 'tileHeader';
 
-      const company = document.createElement('div');
-      company.className = 'company';
-      company.textContent = getCompany(item) || '—';
+  const textWrap = document.createElement('div');
+  textWrap.className = 'tileText';
 
-      const title = document.createElement('div');
-      title.className = 'title';
-      title.textContent = getTitle(item) || '—';
+  const company = document.createElement('div');
+  company.className = 'company';
+  company.textContent = getCompany(item) || '—';
 
-      header.appendChild(company);
-      header.appendChild(title);
+  const title = document.createElement('div');
+  title.className = 'title';
+  title.textContent = getTitle(item) || '—';
 
-      const buttons = document.createElement('div');
-      buttons.className = 'tileButtons';
+  textWrap.appendChild(company);
+  textWrap.appendChild(title);
 
-      const btnReload = document.createElement('button');
-      btnReload.className = 'btn';
-      btnReload.textContent = 'Reload';
+  const btnExternal = document.createElement('button');
+  btnExternal.className = 'tileExternal';
+  btnExternal.innerHTML = 'Open <span style="font-weight:900;">↗</span>';
 
-      const btnExternal = document.createElement('button');
-      btnExternal.className = 'btn primary';
-      btnExternal.textContent = 'Open External';
+  header.appendChild(textWrap);
+  header.appendChild(btnExternal);
 
-      buttons.appendChild(btnReload);
-      buttons.appendChild(btnExternal);
+  const thumbWrap = document.createElement('div');
+  thumbWrap.className = 'thumbWrap';
 
-      const thumbWrap = document.createElement('div');
-      thumbWrap.className = 'thumbWrap';
+  const img = document.createElement('img');
+  img.className = 'thumbImg';
+  const thumb = getThumb(item);
+  img.src = thumb || '';
+  img.alt = (getTitle(item) || 'Playable') + ' thumbnail';
+  img.loading = 'lazy';
 
-      const img = document.createElement('img');
-      img.className = 'thumbImg';
-      const thumb = getThumb(item);
-      img.src = thumb || '';
-      img.alt = (getTitle(item) || 'Playable') + ' thumbnail';
-      img.loading = 'lazy';
-      img.onerror = () => {
-        // keep it dark, but don’t show broken icon
-        img.style.display = 'none';
-      };
+  img.onerror = () => {
+    img.style.display = 'none';
+  };
 
-      const overlay = document.createElement('div');
-      overlay.className = 'thumbOverlay';
+  const overlay = document.createElement('div');
+  overlay.className = 'thumbOverlay';
 
-      thumbWrap.appendChild(img);
-      thumbWrap.appendChild(overlay);
+  thumbWrap.appendChild(img);
+  thumbWrap.appendChild(overlay);
 
-      const ctp = document.createElement('div');
-      ctp.className = 'clickToPlay';
-      ctp.textContent = 'CLICK TO PLAY';
+  const ctp = document.createElement('div');
+  ctp.className = 'clickToPlay';
+  ctp.textContent = 'CLICK TO PLAY';
 
-      tile.appendChild(header);
-      tile.appendChild(buttons);
-      tile.appendChild(thumbWrap);
-      tile.appendChild(ctp);
+  tile.appendChild(header);
+  tile.appendChild(thumbWrap);
+  tile.appendChild(ctp);
 
-      // Click tile => open modal (endpoint)
-      tile.addEventListener('click', (e) => {
-        // ignore button clicks (handled separately)
-        const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
-        if (tag === 'button') return;
-        openModal(item);
-      });
+  tile.addEventListener('click', (e) => {
+    const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+    if (tag === 'button') return;
+    openModal(item);
+  });
 
-      // Reload (tile) => reload endpoint in modal if open, or just no-op
-      btnReload.addEventListener('click', (e) => {
-        e.stopPropagation();
-        // If modal is open on this same item, reload it.
-        if (currentModalItem && currentModalItem === item) reloadModalFrame();
-      });
+  btnExternal.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const ext = getExternal(item);
+    if (ext) window.open(ext, '_blank');
+  });
 
-      // External => open preview link
-      btnExternal.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const ext = getExternal(item);
-        if (ext) window.open(ext, '_blank');
-      });
-
-      return tile;
+  return tile;
+}
     }
 
     function openModal(item){
