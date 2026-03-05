@@ -21,15 +21,16 @@
     *{ box-sizing:border-box; }
     body{
       margin:0;
-      background: radial-gradient(1200px 600px at 50% -50%, rgba(255,106,0,.18), transparent 60%),
-                  radial-gradient(900px 500px at 15% -40%, rgba(255,255,255,.08), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 600px at 50% -50%, rgba(255,106,0,.18), transparent 60%),
+        radial-gradient(900px 500px at 15% -40%, rgba(255,255,255,.08), transparent 55%),
+        var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Inter", Roboto, sans-serif;
       min-height: 100vh;
     }
 
-    /* TOP BAR (match screenshot vibe) */
+    /* TOP BAR */
     .topbar{
       position: sticky;
       top:0;
@@ -99,12 +100,8 @@
       outline: none;
       cursor: pointer;
     }
-    .companySelect{
-      width: 220px;
-    }
-    .select{
-      width: 120px;
-    }
+    .companySelect{ width: 220px; }
+    .select{ width: 120px; }
 
     /* SECTION HEADERS */
     .content{
@@ -139,57 +136,29 @@
 
     /* TILE */
     .tile{
-  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 18px;
-  overflow:hidden;
-  position: relative;
-  height:520px;
-  display:flex;
-  flex-direction:column;
-  box-shadow: 0 30px 90px rgba(0,0,0,.35);
-  transition: transform .15s ease, border-color .15s ease;
-}
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      overflow:hidden;
+      position: relative;
+      height:520px;
+      display:flex;
+      flex-direction:column;
+      box-shadow: 0 30px 90px rgba(0,0,0,.35);
+      transition: transform .15s ease, border-color .15s ease;
+    }
     .tile:hover{
       transform: translateY(-2px);
       border-color: rgba(255,106,0,.55);
     }
     .tileHeader{
-  padding:14px 16px 10px;
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  position:relative;
-  z-index:2;
-}
-
-.tileText{
-  display:flex;
-  flex-direction:column;
-  gap:4px;
-}
-
-.tileExternal{
-  height:32px;
-  padding:0 14px;
-  border-radius:16px;
-  border:none;
-  background:var(--orange);
-  color:#111;
-  font-size:12px;
-  font-weight:700;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  gap:6px;
-  white-space:nowrap;
-  transition:transform .15s ease, box-shadow .15s ease;
-}
-
-.tileExternal:hover{
-  transform:translateY(-1px);
-  box-shadow:0 6px 20px rgba(255,106,0,.35);
-}
+      padding:14px 16px 10px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      position:relative;
+      z-index:2;
+    }
     .company{
       font-weight: 700;
       font-size: 14px;
@@ -200,6 +169,14 @@
       font-size: 13px;
       color: rgba(255,255,255,.55);
       line-height: 1.1;
+    }
+
+    .tileButtons{
+      padding: 0 16px 8px 16px;
+      display:flex;
+      gap:10px;
+      position: relative;
+      z-index: 2;
     }
     .btn{
       height: 30px;
@@ -217,79 +194,70 @@
       border-color: transparent;
       font-weight: 700;
     }
-    .btn:hover{
-      filter: brightness(1.05);
+    .btn:hover{ filter: brightness(1.05); }
+
+    .thumbWrap{
+      position:relative;
+      width:100%;
+      height:380px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:6px;
+      overflow:hidden;
+      z-index:1;
     }
-.thumbWrap{
-  position:relative;
-  width:100%;
-  height:380px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-top:6px;
-  overflow:hidden;
-  z-index:1;
-}
 
-.thumbImg{
-  width:210px;
-  height:374px;
-  object-fit:cover;
-  border-radius:16px;
-  opacity:.95;
-  box-shadow:0 25px 70px rgba(0,0,0,.6);
-  position:relative;
-  z-index:1;
-  transition: transform .25s ease;
-}
+    .thumbImg{
+      width:210px;
+      height:374px;
+      object-fit:cover;
+      border-radius:16px;
+      opacity:.95;
+      box-shadow:0 25px 70px rgba(0,0,0,.6);
+      position:relative;
+      z-index:1;
+      transition: transform .25s ease;
+    }
 
-.thumbOverlay{
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:380px;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.15),
-    rgba(0,0,0,0.6)
-  );
-  opacity:0;
-  transition:opacity .25s ease;
-  pointer-events:none;
-  z-index:2;
-}
+    .thumbOverlay{
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:380px;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.15),
+        rgba(0,0,0,0.6)
+      );
+      opacity:0;
+      transition:opacity .25s ease;
+      pointer-events:none;
+      z-index:2;
+    }
 
-.thumbWrap:hover .thumbOverlay{
-  opacity:1;
-}
+    .thumbWrap:hover .thumbOverlay{ opacity:1; }
+    .thumbWrap:hover .thumbImg{ transform:scale(1.03); }
 
-.thumbWrap:hover .thumbImg{
-  transform:scale(1.03);
-}
-
-.clickToPlay{
-  position:absolute;
-  inset:0;
-  top:60px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:3;
-  color:rgba(255,255,255,.9);
-  font-weight:800;
-  letter-spacing:.12em;
-  font-size:12px;
-  text-transform:uppercase;
-  opacity:0;
-  transition:opacity .2s ease;
-  pointer-events:none;
-}
-
-.tile:hover .clickToPlay{
-  opacity:1;
-}
+    .clickToPlay{
+      position:absolute;
+      inset:0;
+      top:60px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:3;
+      color:rgba(255,255,255,.9);
+      font-weight:800;
+      letter-spacing:.12em;
+      font-size:12px;
+      text-transform:uppercase;
+      opacity:0;
+      transition:opacity .2s ease;
+      pointer-events:none;
+    }
+    .tile:hover .clickToPlay{ opacity:1; }
 
     /* MODAL */
     .modalBackdrop{
@@ -337,7 +305,6 @@
       justify-content:center;
     }
 
-    /* PREVIEW (requested: 9:16 portrait, width 350px) */
     .previewFrameWrap{
       width: 350px;
       height: 622px; /* 350 * 16/9 */
@@ -411,18 +378,20 @@
           <button class="btn primary" id="modalExternal">Open External</button>
         </div>
       </div>
+
       <div class="modalBody">
         <div class="previewFrameWrap">
           <iframe id="modalFrame" src=""></iframe>
         </div>
       </div>
+
       <div class="hint" id="modalHint"></div>
     </div>
   </div>
 
   <script>
     const JSON_PATH = 'Playable_Endpoint_URLs.json';
-    const THUMB_BASE = 'thumbnails/'; // <-- your folder (relative)
+    const THUMB_BASE = 'thumbnails/';
 
     const searchInput = document.getElementById('searchInput');
     const genreSelect = document.getElementById('genreSelect');
@@ -454,14 +423,11 @@
       return norm(item.URL || item.Url || item.link || item.preview || item.Preview);
     }
     function getThumb(item){
-      // Accept either "thumbnail": "foo.png" or "thumbnail": "thumbnails/foo.png"
       let t = norm(item.thumbnail || item.Thumbnail);
       if (!t) return '';
-      // If the json already contains the folder, keep it. Otherwise prepend.
       if (t.startsWith('thumbnails/')) return t;
       return THUMB_BASE + t;
     }
-
     function getCompany(item){
       return norm(item.Company || item.company || item['Company Name'] || item.Client || '');
     }
@@ -469,7 +435,6 @@
       return norm(item.Title || item.title || item['Playable Title'] || '');
     }
     function getGenre(item){
-      // Expecting only "brand" or "gaming"
       return lower(item.Genre);
     }
 
@@ -478,7 +443,6 @@
       if(!r.ok) throw new Error('Could not load JSON: ' + JSON_PATH);
       allItems = await r.json();
 
-      // Normalize + keep only brand/gaming
       allItems = allItems
         .map(x => ({
           ...x,
@@ -527,7 +491,6 @@
     }
 
     function render(){
-      // Clear
       brandGrid.innerHTML = '';
       gamingGrid.innerHTML = '';
 
@@ -542,82 +505,81 @@
     }
 
     function makeTile(item){
-  const tile = document.createElement('div');
-  tile.className = 'tile';
+      const tile = document.createElement('div');
+      tile.className = 'tile';
 
-  const header = document.createElement('div');
-header.className = 'tileHeader';
+      const header = document.createElement('div');
+      header.className = 'tileHeader';
 
-const textWrap = document.createElement('div');
-textWrap.className = 'tileText';
+      const company = document.createElement('div');
+      company.className = 'company';
+      company.textContent = getCompany(item) || '—';
 
-const company = document.createElement('div');
-company.className = 'company';
-company.textContent = getCompany(item) || '—';
+      const title = document.createElement('div');
+      title.className = 'title';
+      title.textContent = getTitle(item) || '—';
 
-const title = document.createElement('div');
-title.className = 'title';
-title.textContent = getTitle(item) || '—';
+      header.appendChild(company);
+      header.appendChild(title);
 
-textWrap.appendChild(company);
-textWrap.appendChild(title);
+      const buttons = document.createElement('div');
+      buttons.className = 'tileButtons';
 
-const btnExternal = document.createElement('button');
-btnExternal.className = 'tileExternal';
-btnExternal.innerHTML = 'Open ↗';
+      const btnReload = document.createElement('button');
+      btnReload.className = 'btn';
+      btnReload.textContent = 'Reload';
 
-header.appendChild(textWrap);
-header.appendChild(btnExternal);
+      const btnExternal = document.createElement('button');
+      btnExternal.className = 'btn primary';
+      btnExternal.textContent = 'Open External';
 
-  const btnExternal = document.createElement('button');
-  btnExternal.className = 'tileExternal';
-  btnExternal.innerHTML = 'Open <span style="font-weight:900;">↗</span>';
+      buttons.appendChild(btnReload);
+      buttons.appendChild(btnExternal);
 
-  header.appendChild(textWrap);
-  header.appendChild(btnExternal);
+      const thumbWrap = document.createElement('div');
+      thumbWrap.className = 'thumbWrap';
 
-  const thumbWrap = document.createElement('div');
-  thumbWrap.className = 'thumbWrap';
+      const img = document.createElement('img');
+      img.className = 'thumbImg';
+      const thumb = getThumb(item);
+      img.src = thumb || '';
+      img.alt = (getTitle(item) || 'Playable') + ' thumbnail';
+      img.loading = 'lazy';
+      img.onerror = () => { img.style.display = 'none'; };
 
-  const img = document.createElement('img');
-  img.className = 'thumbImg';
-  const thumb = getThumb(item);
-  img.src = thumb || '';
-  img.alt = (getTitle(item) || 'Playable') + ' thumbnail';
-  img.loading = 'lazy';
+      const overlay = document.createElement('div');
+      overlay.className = 'thumbOverlay';
 
-  img.onerror = () => {
-    img.style.display = 'none';
-  };
+      thumbWrap.appendChild(img);
+      thumbWrap.appendChild(overlay);
 
-  const overlay = document.createElement('div');
-  overlay.className = 'thumbOverlay';
+      const ctp = document.createElement('div');
+      ctp.className = 'clickToPlay';
+      ctp.textContent = 'CLICK TO PLAY';
 
-  thumbWrap.appendChild(img);
-  thumbWrap.appendChild(overlay);
+      tile.appendChild(header);
+      tile.appendChild(buttons);
+      tile.appendChild(thumbWrap);
+      tile.appendChild(ctp);
 
-  const ctp = document.createElement('div');
-  ctp.className = 'clickToPlay';
-  ctp.textContent = 'CLICK TO PLAY';
+      tile.addEventListener('click', (e) => {
+        const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+        if (tag === 'button') return;
+        openModal(item);
+      });
 
-  tile.appendChild(header);
-  tile.appendChild(thumbWrap);
-  tile.appendChild(ctp);
+      btnReload.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (currentModalItem && currentModalItem === item) reloadModalFrame();
+      });
 
-  tile.addEventListener('click', (e) => {
-    const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
-    if (tag === 'button') return;
-    openModal(item);
-  });
+      btnExternal.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const ext = getExternal(item);
+        if (ext) window.open(ext, '_blank');
+      });
 
-  btnExternal.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const ext = getExternal(item);
-    if (ext) window.open(ext, '_blank');
-  });
-
-  return tile;
-}
+      return tile;
     }
 
     function openModal(item){
@@ -656,7 +618,6 @@ header.appendChild(btnExternal);
       return url + join + '_=' + Date.now();
     }
 
-    // Close modal on backdrop click
     modalBackdrop.addEventListener('click', (e) => {
       if (e.target === modalBackdrop){
         modalBackdrop.style.display = 'none';
@@ -665,7 +626,6 @@ header.appendChild(btnExternal);
       }
     });
 
-    // ESC closes modal
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modalBackdrop.style.display === 'flex'){
         modalBackdrop.style.display = 'none';
