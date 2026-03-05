@@ -546,21 +546,28 @@
   tile.className = 'tile';
 
   const header = document.createElement('div');
-  header.className = 'tileHeader';
+header.className = 'tileHeader';
 
-  const textWrap = document.createElement('div');
-  textWrap.className = 'tileText';
+const textWrap = document.createElement('div');
+textWrap.className = 'tileText';
 
-  const company = document.createElement('div');
-  company.className = 'company';
-  company.textContent = getCompany(item) || '—';
+const company = document.createElement('div');
+company.className = 'company';
+company.textContent = getCompany(item) || '—';
 
-  const title = document.createElement('div');
-  title.className = 'title';
-  title.textContent = getTitle(item) || '—';
+const title = document.createElement('div');
+title.className = 'title';
+title.textContent = getTitle(item) || '—';
 
-  textWrap.appendChild(company);
-  textWrap.appendChild(title);
+textWrap.appendChild(company);
+textWrap.appendChild(title);
+
+const btnExternal = document.createElement('button');
+btnExternal.className = 'tileExternal';
+btnExternal.innerHTML = 'Open ↗';
+
+header.appendChild(textWrap);
+header.appendChild(btnExternal);
 
   const btnExternal = document.createElement('button');
   btnExternal.className = 'tileExternal';
