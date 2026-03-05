@@ -1,12 +1,12 @@
 [
   {
-    "Title": "MLB 9 Innings",
-    "Company": "Com2uS",
-    "Genre": "Gaming",
-    "URL": "https://play.preview.craftsmanplus.com/preview/?example",
-    "Endpoint URL": "https://endpoints.prod.craftsmanplus.com/example/index.html",
-    "thumbnail": "mlb9innings.png"
-  },
+  "Title": "9 Innings",
+  "Company": "Com2uS",
+  "Genre": "Gaming",
+  "URL": "https://play.preview.craftsmanplus.com/?playable=https://production-static-playables.s3.amazonaws.com/test/mlb/7/index.html?portrait=true",
+  "Endpoint URL": "https://production-static-playables.s3.amazonaws.com/test/mlb/7/index.html",
+  "thumbnail": "mlb-nine-innings.png"
+},
   {
     "Title": "Hoops Clash",
     "Company": "YesGnome",
