@@ -1,84 +1,34 @@
- { "Title": "Conde Nast — Bon Appetit", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Amazon — Kindle", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Pandora — Pandora", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Apple — iBooks", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-
-  { "Title": "ABC — Supermarket Sweep", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Disney — Soul", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Orange — Attrapez Noel", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Seattle Aquarium — Seattle Aquarium", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-
-  { "Title": "Amazon — Prime", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Red Bull — Red Bull", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Walmart — Cook Shop", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Subway — Subway", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-
-  { "Title": "Truebill — Truebill (Treadmill)", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Truebill — Truebill (Subscriptions)", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Commbank — Commbank", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Quicken Loans — Rocket Mortgage", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-
-  { "Title": "Cologuard — Cologuard", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Popreach — Peak", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "American Lung Association — Talk About Vaping", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-
-  { "Title": "Toyota — Toyota", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Essie — Essie", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Ralph Lauren — Virtual Chalet", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Ralph Lauren — Holiday Run", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-
-  { "Title": "Rover — Rover", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Sosh — Sosh", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Tophatter — Tophatter", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-
-  { "Title": "Niantic — Pokémon GO", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Niantic — Catan World Explorers", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Scopely — Marvel Strike Force", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Scopely — Marvel Strike Force (Recruit)", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-
-  { "Title": "Paradox — Stellaris Galaxy Command", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Wizards of the Coast — Magic Spellslingers", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Wizards of the Coast — Magic Spellslingers (Ajani)", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Wizards of the Coast — Magic Arena", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-
-  { "Title": "Scopely — Looney Tunes", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Scopely — Looney Tunes (Install)", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Kongregate — Royal Idle", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Kongregate — TMNT Mutant Madness", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-
-  { "Title": "Tilting Point — Adventure Escape Mysteries", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Tilting Point — Krusty Cook-Off", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Tilting Point — Zombieland AFK Survival", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Tilting Point — Narcos Idle Cartel", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-
-  { "Title": "Jam City — Harry Potter Hogwarts Mystery", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Warner Bros — Harry Potter Wizards Unite", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Warner Bros — Game of Thrones Conquest", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-
-  { "Title": "Com2uS — MLB 9 Innings", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "YesGnome — Hoops Clash", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Hothead Games — Superhit Baseball", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-
-  { "Title": "DECA — Dragonvale", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Dreamworks — Dragons Titan Uprising", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Game Hive — Tap Titans 2", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Ludia — Jurassic World Alive", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-
-  { "Title": "Loop Games — Match 3D", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "King — Candy Crush Friends", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Microsoft — Solitaire", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Wooloo — Dominoes", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-
-  { "Title": "37 Games — Puzzles & Survival", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Ten Square — Solitaires", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Ember — Word", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Reworks — Redecor", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-
-  { "Title": "Halfdome — Pointsbet", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Florida Lottery — Florida Lottery", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Bspot — Bspot", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Skillz — Blackout Blitz", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-
-  { "Title": "Apple — Skate City", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
-  { "Title": "Forza — Forza Street", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" }
+[
+  {
+    "Title": "MLB 9 Innings",
+    "Company": "Com2uS",
+    "Genre": "Gaming",
+    "URL": "https://play.preview.craftsmanplus.com/preview/?example",
+    "Endpoint URL": "https://endpoints.prod.craftsmanplus.com/example/index.html",
+    "thumbnail": "mlb9innings.png"
+  },
+  {
+    "Title": "Hoops Clash",
+    "Company": "YesGnome",
+    "Genre": "Gaming",
+    "URL": "https://play.preview.craftsmanplus.com/preview/?example",
+    "Endpoint URL": "https://endpoints.prod.craftsmanplus.com/example/index.html",
+    "thumbnail": "hoops-clash.png"
+  },
+  {
+    "Title": "Kindle",
+    "Company": "Amazon",
+    "Genre": "Brand",
+    "URL": "https://play.preview.craftsmanplus.com/preview/?example",
+    "Endpoint URL": "https://endpoints.prod.craftsmanplus.com/example/index.html",
+    "thumbnail": "kindle.png"
+  },
+  {
+    "Title": "Soul",
+    "Company": "Disney",
+    "Genre": "Brand",
+    "URL": "https://play.preview.craftsmanplus.com/preview/?example",
+    "Endpoint URL": "https://endpoints.prod.craftsmanplus.com/example/index.html",
+    "thumbnail": "soul.png"
+  }
 ]
