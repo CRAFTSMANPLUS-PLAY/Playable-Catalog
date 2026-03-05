@@ -1,286 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=1400" />
-<title>CRAFTSMAN+ Playable Catalogue</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Playable Catalog</title>
 
 <style>
-:root {
-  --bg: #0c0c0c;
-  --panel: #161616;
-  --border: #2a2a2a;
-  --text: #ffffff;
-  --muted: #a0a0a0;
-  --orange: #f86400;
-  --orange-dark: #e45700;
+
+body{
+font-family:Arial;
+background:#0f0f10;
+color:white;
+margin:0;
+padding:30px;
 }
 
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+header{
+display:flex;
+gap:15px;
+margin-bottom:30px;
 }
 
-/* TOP NAV */
-.topbar {
-  height: 70px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 40px;
-  background: #0f0f0f;
+select{
+padding:8px;
+border-radius:6px;
+border:none;
 }
 
-.logo {
-  font-weight: 600;
-  letter-spacing: 2px;
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
 }
 
-.search-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+.tile{
+background:#1a1a1c;
+border-radius:12px;
+cursor:pointer;
+overflow:hidden;
+position:relative;
+transition:transform .2s;
 }
 
-.search-input {
-  width: 420px;
-  padding: 10px 14px;
-  background: #1a1a1a;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: white;
-  font-size: 14px;
+.tile:hover{
+transform:scale(1.03);
 }
 
-.search-input:focus {
-  border-color: var(--orange);
-  box-shadow: 0 0 0 2px rgba(248,100,0,0.3);
-  outline: none;
+.tile img{
+width:100%;
+display:block;
 }
 
-.dropdown {
-  background: #1a1a1a;
-  border: 1px solid var(--border);
-  color: white;
-  padding: 8px 12px;
-  border-radius: 6px;
+.tile-info{
+padding:10px;
 }
 
-.dropdown:focus {
-  border-color: var(--orange);
-  box-shadow: 0 0 0 2px rgba(248,100,0,0.3);
-  outline: none;
+.overlay{
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(0,0,0,.6);
+opacity:0;
+transition:.2s;
+font-weight:bold;
 }
 
-/* MAIN CONTENT */
-.container {
-  width: 1400px;
-  margin: 60px auto 120px auto;
+.tile:hover .overlay{
+opacity:1;
 }
 
-.section {
-  margin-bottom: 120px;
+.modal{
+position:fixed;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:rgba(0,0,0,.8);
+display:none;
+align-items:center;
+justify-content:center;
 }
 
-.section h2 {
-  font-size: 16px;
-  letter-spacing: 2px;
-  font-weight: 500;
-  margin-bottom: 40px;
-  color: var(--muted);
+.modal-content{
+background:#1a1a1c;
+padding:20px;
+border-radius:12px;
+text-align:center;
 }
 
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+iframe{
+width:442px;
+height:880px;
+border:none;
+background:black;
 }
 
-/* CARD */
-.card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
+button{
+background:#f86400;
+border:none;
+color:white;
+padding:8px 14px;
+margin:10px;
+border-radius:6px;
+cursor:pointer;
 }
 
-.card h3 {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.card p {
-  margin: 4px 0 14px 0;
-  font-size: 12px;
-  color: var(--muted);
-}
-
-.card iframe {
-  width: 100%;
-  height: 300px;
-  border: none;
-  border-radius: 6px;
-  background: #000;
-}
-
-.button-row {
-  margin-top: 12px;
-  display: flex;
-  gap: 8px;
-}
-
-/* BUTTONS */
-.btn-primary {
-  background: var(--orange);
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 12px;
-  transition: all 0.2s ease;
-}
-
-.btn-primary:hover {
-  background: var(--orange-dark);
-}
-
-.btn-secondary {
-  background: transparent;
-  border: 1px solid var(--orange);
-  color: var(--orange);
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 12px;
-  transition: all 0.2s ease;
-}
-
-.btn-secondary:hover {
-  background: var(--orange);
-  color: white;
-}
-
-.hidden {
-  display: none;
-}
 </style>
 </head>
 
 <body>
 
-<div class="topbar">
-  <div class="logo">CRAFTSMAN+</div>
+<header>
 
-  <div class="search-container">
-    <input 
-      type="text" 
-      class="search-input" 
-      id="searchInput" 
-      placeholder="Search playable catalog..."
-    />
-  </div>
+<select id="genreFilter">
+<option value="All">Genre</option>
+<option value="Brand">Brand</option>
+<option value="Gaming">Gaming</option>
+</select>
 
-  <select class="dropdown" id="categoryFilter">
-    <option value="All">All</option>
-    <option value="Brands">Brands</option>
-    <option value="Gaming">Gaming</option>
-  </select>
+<select id="companyFilter">
+<option value="All">Company</option>
+</select>
+
+</header>
+
+<div class="grid" id="grid"></div>
+
+<div class="modal" id="modal">
+
+<div class="modal-content">
+
+<h2 id="modalTitle"></h2>
+
+<button id="reloadBtn">Reload</button>
+<button id="externalBtn">Open External</button>
+
+<br><br>
+
+<iframe id="playFrame"></iframe>
+
 </div>
 
-<div class="container" id="catalog"></div>
+</div>
 
 <script>
-let rawData = [];
 
-async function loadData() {
-  const res = await fetch("data/catalog.json");
-  rawData = await res.json();
-  render();
+let data=[]
+let frame=document.getElementById("playFrame")
+let modal=document.getElementById("modal")
+
+fetch("Playable_Endpoint_URLs.json")
+.then(res=>res.json())
+.then(json=>{
+data=json
+populateCompanies()
+render()
+})
+
+function populateCompanies(){
+
+let companies=[...new Set(data.map(d=>d.Company))]
+let select=document.getElementById("companyFilter")
+
+companies.forEach(c=>{
+let o=document.createElement("option")
+o.value=c
+o.textContent=c
+select.appendChild(o)
+})
+
 }
 
-function render() {
-  const searchValue = document.getElementById("searchInput").value.toLowerCase();
-  const categoryValue = document.getElementById("categoryFilter").value;
+function render(){
 
-  const container = document.getElementById("catalog");
-  container.innerHTML = "";
+let genre=document.getElementById("genreFilter").value
+let company=document.getElementById("companyFilter").value
 
-  rawData.forEach(section => {
+let filtered=data.filter(d=>
 
-    const isBrand = section.category.includes("BRAND");
-    const isGaming = section.category.includes("GAMING");
+(genre==="All"||d.Genre===genre)&&
+(company==="All"||d.Company===company)
 
-    if (
-      categoryValue === "Brands" && !isBrand ||
-      categoryValue === "Gaming" && !isGaming
-    ) return;
+)
 
-    const filteredItems = section.items.filter(item =>
-      item.title.toLowerCase().includes(searchValue) ||
-      item.subtitle.toLowerCase().includes(searchValue)
-    );
+let grid=document.getElementById("grid")
+grid.innerHTML=""
 
-    if (filteredItems.length === 0) return;
+filtered.forEach(item=>{
 
-    const sectionDiv = document.createElement("div");
-    sectionDiv.classList.add("section");
+let tile=document.createElement("div")
+tile.className="tile"
 
-    const title = document.createElement("h2");
-    title.innerText = section.category;
-    sectionDiv.appendChild(title);
+tile.innerHTML=`
 
-    const grid = document.createElement("div");
-    grid.classList.add("grid");
+<img src="thumbnails/${item.thumbnail}">
 
-    filteredItems.forEach(item => {
-      const card = document.createElement("div");
-      card.classList.add("card");
+<div class="overlay">Click to Play</div>
 
-      const iframeId = "frame_" + Math.random().toString(36).substring(2, 9);
+<div class="tile-info">
+<b>${item.Title}</b><br>
+${item.Company}
+</div>
 
-      card.innerHTML = `
-        <h3>${item.title}</h3>
-        <p>${item.subtitle}</p>
-        <iframe id="${iframeId}" src="${item.previewUrl || ""}"></iframe>
-        <div class="button-row">
-          <button class="btn-secondary" onclick="reloadFrame('${iframeId}', '${item.previewUrl}')">Reload</button>
-          <button class="btn-primary" onclick="openExternal('${item.previewUrl}')">Open External</button>
-        </div>
-      `;
+`
 
-      grid.appendChild(card);
-    });
+tile.onclick=()=>openPlayable(item)
 
-    sectionDiv.appendChild(grid);
-    container.appendChild(sectionDiv);
-  });
+grid.appendChild(tile)
+
+})
+
 }
 
-function reloadFrame(id, url) {
-  const frame = document.getElementById(id);
-  frame.src = "";
-  setTimeout(() => frame.src = url, 50);
+function openPlayable(item){
+
+document.getElementById("modalTitle").innerText=
+item.Title+" – "+item.Company
+
+frame.src=item["Endpoint URL"]
+
+document.getElementById("externalBtn").onclick=()=>{
+window.open(item.URL)
 }
 
-function openExternal(url) {
-  if (!url) return;
-  window.open(url, "_blank");
+document.getElementById("reloadBtn").onclick=()=>{
+frame.src=item["Endpoint URL"]
 }
 
-document.getElementById("searchInput").addEventListener("input", render);
-document.getElementById("categoryFilter").addEventListener("change", render);
+modal.style.display="flex"
 
-loadData();
+}
+
+modal.onclick=e=>{
+if(e.target===modal){
+modal.style.display="none"
+frame.src=""
+}
+}
+
+document.getElementById("genreFilter").onchange=render
+document.getElementById("companyFilter").onchange=render
+
 </script>
 
 </body>
