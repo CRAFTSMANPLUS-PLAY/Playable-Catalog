@@ -1,16 +1,9 @@
 [
-  {
+ {
     "Title": "Bon Appetit",
     "Genre": "Brand - Subscriptions",
     "URL": "https://play.preview.craftsmanplus.com/?playable=https://production-static-playables.s3.amazonaws.com/test/61condenastbonappetit/6/index.html?portrait=true",
     "Endpoint URL": "https://production-static-playables.s3.amazonaws.com/test/61condenastbonappetit/6/index.html",
-    "thumbnail": "bon-appetit.png"
-  },
-  {
-    "Title": "Bon Appetit",
-    "Genre": "Brand - Subscriptions",
-    "URL": "",
-    "Endpoint URL": "",
     "thumbnail": "bon-appetit.png"
   },
   {
