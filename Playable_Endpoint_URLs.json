@@ -267,8 +267,8 @@
 "Title":"Pandora",
 "Company":"Pandora",
 "Genre":"Brand",
-"URL":"",
-"Endpoint URL":"",
+"URL":"https://play.preview.craftsmanplus.com/?playable=https://production-static-playables.s3.amazonaws.com/test/pandora/c1/responsive/index.html?portrait=true",
+"Endpoint URL":"https://production-static-playables.s3.amazonaws.com/test/pandora/c1/responsive/index.html",
 "thumbnail":"pandora.png"
 },
 {
