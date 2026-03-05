@@ -1,211 +1,34 @@
-{
-    "Title": "Bon Appetit",
-    "Genre": "Brand - Subscriptions",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "bon-appetit.png"
-  },
-  {
-    "Title": "Kindle",
-    "Genre": "Brand - Subscriptions",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "kindle.png"
-  },
-  {
-    "Title": "Pandora",
-    "Genre": "Brand - Subscriptions",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "pandora.png"
-  },
-  {
-    "Title": "iBooks",
-    "Genre": "Brand - Subscriptions",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "ibooks.png"
-  },
-
-  {
-    "Title": "Supermarket Sweep",
-    "Genre": "Brand - Entertainment",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "supermarket-sweep.png"
-  },
-  {
-    "Title": "Soul",
-    "Genre": "Brand - Entertainment",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "soul.png"
-  },
-  {
-    "Title": "Attrapez Noel",
-    "Genre": "Brand - Entertainment",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "attrapez-noel.png"
-  },
-  {
-    "Title": "Seattle Aquarium",
-    "Genre": "Brand - Entertainment",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "seattle-aquarium.png"
-  },
-
-  {
-    "Title": "Prime",
-    "Genre": "Brand - Food & Beverage",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "prime.png"
-  },
-  {
-    "Title": "Red Bull",
-    "Genre": "Brand - Food & Beverage",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "red-bull.png"
-  },
-  {
-    "Title": "Cook Shop",
-    "Genre": "Brand - Food & Beverage",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "cook-shop.png"
-  },
-  {
-    "Title": "Subway",
-    "Genre": "Brand - Food & Beverage",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "subway.png"
-  },
-
-  {
-    "Title": "Truebill (Treadmill)",
-    "Genre": "Brand - Fintech",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "truebill-treadmill.png"
-  },
-  {
-    "Title": "Truebill (Subscriptions)",
-    "Genre": "Brand - Fintech",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "truebill-subscriptions.png"
-  },
-  {
-    "Title": "Commbank",
-    "Genre": "Brand - Fintech",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "commbank.png"
-  },
-  {
-    "Title": "Rocket Mortgage",
-    "Genre": "Brand - Fintech",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "rocket-mortgage.png"
-  },
-
-  {
-    "Title": "Cologuard",
-    "Genre": "Brand - Health",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "cologuard.png"
-  },
-  {
-    "Title": "Peak",
-    "Genre": "Brand - Health",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "peak.png"
-  },
-  {
-    "Title": "Talk About Vaping",
-    "Genre": "Brand - Health",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "talk-about-vaping.png"
-  },
-
-  {
-    "Title": "Toyota",
-    "Genre": "Brand - Brands",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "toyota.png"
-  },
-  {
-    "Title": "Essie",
-    "Genre": "Brand - Brands",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "essie.png"
-  },
-  {
-    "Title": "Virtual Chalet",
-    "Genre": "Brand - Brands",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "virtual-chalet.png"
-  },
-  {
-    "Title": "Holiday Run",
-    "Genre": "Brand - Brands",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "holiday-run.png"
-  },
-
-  {
-    "Title": "Rover",
-    "Genre": "Brand - Misc",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "rover.png"
-  },
-  {
-    "Title": "Sosh",
-    "Genre": "Brand - Misc",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "sosh.png"
-  },
-  {
-    "Title": "Tophatter",
-    "Genre": "Brand - Misc",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "tophatter.png"
-  },
-
+[
   {
     "Title": "MLB 9 Innings",
-    "Genre": "Gaming - Sports",
-    "URL": "",
-    "Endpoint URL": "",
+    "Company": "Com2uS",
+    "Genre": "Gaming",
+    "URL": "https://play.preview.craftsmanplus.com/preview/?example",
+    "Endpoint URL": "https://endpoints.prod.craftsmanplus.com/example/index.html",
     "thumbnail": "mlb9innings.png"
   },
   {
     "Title": "Hoops Clash",
-    "Genre": "Gaming - Sports",
-    "URL": "",
-    "Endpoint URL": "",
+    "Company": "YesGnome",
+    "Genre": "Gaming",
+    "URL": "https://play.preview.craftsmanplus.com/preview/?example",
+    "Endpoint URL": "https://endpoints.prod.craftsmanplus.com/example/index.html",
     "thumbnail": "hoops-clash.png"
   },
   {
-    "Title": "Superhit Baseball",
-    "Genre": "Gaming - Sports",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "superhit-baseball.png"
+    "Title": "Kindle",
+    "Company": "Amazon",
+    "Genre": "Brand",
+    "URL": "https://play.preview.craftsmanplus.com/preview/?example",
+    "Endpoint URL": "https://endpoints.prod.craftsmanplus.com/example/index.html",
+    "thumbnail": "kindle.png"
+  },
+  {
+    "Title": "Soul",
+    "Company": "Disney",
+    "Genre": "Brand",
+    "URL": "https://play.preview.craftsmanplus.com/preview/?example",
+    "Endpoint URL": "https://endpoints.prod.craftsmanplus.com/example/index.html",
+    "thumbnail": "soul.png"
   }
 ]
