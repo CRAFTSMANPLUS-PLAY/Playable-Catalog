@@ -1,217 +1,212 @@
 [
   {
-    "category": "BRAND PLAYABLES - SUBSCRIPTIONS",
-    "items": [
-      {
-        "title": "Conde Nast",
-        "subtitle": "Bon Appetit",
-        "thumbnail": "bon-appetit.png",
-        "previewUrl": "https://play.preview.craftsmanplus.com/?playable=https://production-static-playables.s3.amazonaws.com/test/61condenastbonappetit/6/index.html?portrait=true"
-        "Endpoint URL": "https://production-static-playables.s3.amazonaws.com/test/61condenastbonappetit/6/index.html",
-      },
-      {
-        "title": "Amazon",
-        "subtitle": "Kindle",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Pandora",
-        "subtitle": "Pandora",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Apple",
-        "subtitle": "iBooks",
-        "thumbnail": "",
-        "previewUrl": ""
-      }
-    ]
+    "Title": "Bon Appetit",
+    "Genre": "Brand - Subscriptions",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "bon-appetit.png"
   },
   {
-    "category": "BRAND PLAYABLES - ENTERTAINMENT",
-    "items": [
-      {
-        "title": "ABC",
-        "subtitle": "Supermarket Sweep",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Disney",
-        "subtitle": "Soul",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Orange",
-        "subtitle": "Attrapez Noel",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Seattle Aquarium",
-        "subtitle": "Seattle Aquarium",
-        "thumbnail": "",
-        "previewUrl": ""
-      }
-    ]
+    "Title": "Kindle",
+    "Genre": "Brand - Subscriptions",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "kindle.png"
   },
   {
-    "category": "BRAND PLAYABLES - FOOD & BEVERAGE",
-    "items": [
-      {
-        "title": "Amazon",
-        "subtitle": "Prime",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Red Bull",
-        "subtitle": "Red Bull",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Walmart",
-        "subtitle": "Cook Shop",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Subway",
-        "subtitle": "Subway",
-        "thumbnail": "",
-        "previewUrl": ""
-      }
-    ]
+    "Title": "Pandora",
+    "Genre": "Brand - Subscriptions",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "pandora.png"
   },
   {
-    "category": "BRAND PLAYABLES - FINTECH",
-    "items": [
-      {
-        "title": "Truebill",
-        "subtitle": "Truebill (Treadmill)",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Truebill",
-        "subtitle": "Truebill (Subscriptions)",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Commbank",
-        "subtitle": "Commbank",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Quicken Loans",
-        "subtitle": "Rocket Mortgage",
-        "thumbnail": "",
-        "previewUrl": ""
-      }
-    ]
+    "Title": "iBooks",
+    "Genre": "Brand - Subscriptions",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "ibooks.png"
+  },
+
+  {
+    "Title": "Supermarket Sweep",
+    "Genre": "Brand - Entertainment",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "supermarket-sweep.png"
   },
   {
-    "category": "BRAND PLAYABLES - HEALTH",
-    "items": [
-      {
-        "title": "Cologuard",
-        "subtitle": "Cologuard",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Popreach",
-        "subtitle": "Peak",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "American Lung Association",
-        "subtitle": "Talk About Vaping",
-        "thumbnail": "",
-        "previewUrl": ""
-      }
-    ]
+    "Title": "Soul",
+    "Genre": "Brand - Entertainment",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "soul.png"
   },
   {
-    "category": "BRAND PLAYABLES - BRANDS",
-    "items": [
-      {
-        "title": "Toyota",
-        "subtitle": "Toyota",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Essie",
-        "subtitle": "Essie",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Ralph Lauren",
-        "subtitle": "Virtual Chalet",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Ralph Lauren",
-        "subtitle": "Holiday Run",
-        "thumbnail": "",
-        "previewUrl": ""
-      }
-    ]
+    "Title": "Attrapez Noel",
+    "Genre": "Brand - Entertainment",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "attrapez-noel.png"
   },
   {
-    "category": "BRAND PLAYABLES - MISCELLANEOUS",
-    "items": [
-      {
-        "title": "Rover",
-        "subtitle": "Rover",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Sosh",
-        "subtitle": "Sosh",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Tophatter",
-        "subtitle": "Tophatter",
-        "thumbnail": "",
-        "previewUrl": ""
-      }
-    ]
+    "Title": "Seattle Aquarium",
+    "Genre": "Brand - Entertainment",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "seattle-aquarium.png"
+  },
+
+  {
+    "Title": "Prime",
+    "Genre": "Brand - Food & Beverage",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "prime.png"
   },
   {
-    "category": "GAMING - SPORTS",
-    "items": [
-      {
-        "title": "Com2uS",
-        "subtitle": "MLB 9 Innings",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "YesGnome",
-        "subtitle": "Hoops Clash",
-        "thumbnail": "",
-        "previewUrl": ""
-      },
-      {
-        "title": "Hothead Games",
-        "subtitle": "Superhit Baseball",
-        "thumbnail": "",
-        "previewUrl": ""
-      }
-    ]
+    "Title": "Red Bull",
+    "Genre": "Brand - Food & Beverage",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "red-bull.png"
+  },
+  {
+    "Title": "Cook Shop",
+    "Genre": "Brand - Food & Beverage",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "cook-shop.png"
+  },
+  {
+    "Title": "Subway",
+    "Genre": "Brand - Food & Beverage",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "subway.png"
+  },
+
+  {
+    "Title": "Truebill (Treadmill)",
+    "Genre": "Brand - Fintech",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "truebill-treadmill.png"
+  },
+  {
+    "Title": "Truebill (Subscriptions)",
+    "Genre": "Brand - Fintech",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "truebill-subscriptions.png"
+  },
+  {
+    "Title": "Commbank",
+    "Genre": "Brand - Fintech",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "commbank.png"
+  },
+  {
+    "Title": "Rocket Mortgage",
+    "Genre": "Brand - Fintech",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "rocket-mortgage.png"
+  },
+
+  {
+    "Title": "Cologuard",
+    "Genre": "Brand - Health",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "cologuard.png"
+  },
+  {
+    "Title": "Peak",
+    "Genre": "Brand - Health",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "peak.png"
+  },
+  {
+    "Title": "Talk About Vaping",
+    "Genre": "Brand - Health",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "talk-about-vaping.png"
+  },
+
+  {
+    "Title": "Toyota",
+    "Genre": "Brand - Brands",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "toyota.png"
+  },
+  {
+    "Title": "Essie",
+    "Genre": "Brand - Brands",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "essie.png"
+  },
+  {
+    "Title": "Virtual Chalet",
+    "Genre": "Brand - Brands",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "virtual-chalet.png"
+  },
+  {
+    "Title": "Holiday Run",
+    "Genre": "Brand - Brands",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "holiday-run.png"
+  },
+
+  {
+    "Title": "Rover",
+    "Genre": "Brand - Misc",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "rover.png"
+  },
+  {
+    "Title": "Sosh",
+    "Genre": "Brand - Misc",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "sosh.png"
+  },
+  {
+    "Title": "Tophatter",
+    "Genre": "Brand - Misc",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "tophatter.png"
+  },
+
+  {
+    "Title": "MLB 9 Innings",
+    "Genre": "Gaming - Sports",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "mlb9innings.png"
+  },
+  {
+    "Title": "Hoops Clash",
+    "Genre": "Gaming - Sports",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "hoops-clash.png"
+  },
+  {
+    "Title": "Superhit Baseball",
+    "Genre": "Gaming - Sports",
+    "URL": "",
+    "Endpoint URL": "",
+    "thumbnail": "superhit-baseball.png"
   }
 ]
