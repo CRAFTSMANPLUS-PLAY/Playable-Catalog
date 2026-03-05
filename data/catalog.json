@@ -1,212 +1,84 @@
-[
- {
-    "Title": "Bon Appetit",
-    "Genre": "Brand - Subscriptions",
-    "URL": "https://play.preview.craftsmanplus.com/?playable=https://production-static-playables.s3.amazonaws.com/test/61condenastbonappetit/6/index.html?portrait=true",
-    "Endpoint URL": "https://production-static-playables.s3.amazonaws.com/test/61condenastbonappetit/6/index.html",
-    "thumbnail": "bon-appetit.png"
-  },
-  {
-    "Title": "Kindle",
-    "Genre": "Brand - Subscriptions",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "kindle.png"
-  },
-  {
-    "Title": "Pandora",
-    "Genre": "Brand - Subscriptions",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "pandora.png"
-  },
-  {
-    "Title": "iBooks",
-    "Genre": "Brand - Subscriptions",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "ibooks.png"
-  },
+ { "Title": "Conde Nast — Bon Appetit", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Amazon — Kindle", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Pandora — Pandora", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Apple — iBooks", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
 
-  {
-    "Title": "Supermarket Sweep",
-    "Genre": "Brand - Entertainment",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "supermarket-sweep.png"
-  },
-  {
-    "Title": "Soul",
-    "Genre": "Brand - Entertainment",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "soul.png"
-  },
-  {
-    "Title": "Attrapez Noel",
-    "Genre": "Brand - Entertainment",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "attrapez-noel.png"
-  },
-  {
-    "Title": "Seattle Aquarium",
-    "Genre": "Brand - Entertainment",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "seattle-aquarium.png"
-  },
+  { "Title": "ABC — Supermarket Sweep", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Disney — Soul", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Orange — Attrapez Noel", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Seattle Aquarium — Seattle Aquarium", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
 
-  {
-    "Title": "Prime",
-    "Genre": "Brand - Food & Beverage",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "prime.png"
-  },
-  {
-    "Title": "Red Bull",
-    "Genre": "Brand - Food & Beverage",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "red-bull.png"
-  },
-  {
-    "Title": "Cook Shop",
-    "Genre": "Brand - Food & Beverage",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "cook-shop.png"
-  },
-  {
-    "Title": "Subway",
-    "Genre": "Brand - Food & Beverage",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "subway.png"
-  },
+  { "Title": "Amazon — Prime", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Red Bull — Red Bull", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Walmart — Cook Shop", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Subway — Subway", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
 
-  {
-    "Title": "Truebill (Treadmill)",
-    "Genre": "Brand - Fintech",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "truebill-treadmill.png"
-  },
-  {
-    "Title": "Truebill (Subscriptions)",
-    "Genre": "Brand - Fintech",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "truebill-subscriptions.png"
-  },
-  {
-    "Title": "Commbank",
-    "Genre": "Brand - Fintech",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "commbank.png"
-  },
-  {
-    "Title": "Rocket Mortgage",
-    "Genre": "Brand - Fintech",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "rocket-mortgage.png"
-  },
+  { "Title": "Truebill — Truebill (Treadmill)", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Truebill — Truebill (Subscriptions)", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Commbank — Commbank", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Quicken Loans — Rocket Mortgage", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
 
-  {
-    "Title": "Cologuard",
-    "Genre": "Brand - Health",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "cologuard.png"
-  },
-  {
-    "Title": "Peak",
-    "Genre": "Brand - Health",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "peak.png"
-  },
-  {
-    "Title": "Talk About Vaping",
-    "Genre": "Brand - Health",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "talk-about-vaping.png"
-  },
+  { "Title": "Cologuard — Cologuard", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Popreach — Peak", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "American Lung Association — Talk About Vaping", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
 
-  {
-    "Title": "Toyota",
-    "Genre": "Brand - Brands",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "toyota.png"
-  },
-  {
-    "Title": "Essie",
-    "Genre": "Brand - Brands",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "essie.png"
-  },
-  {
-    "Title": "Virtual Chalet",
-    "Genre": "Brand - Brands",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "virtual-chalet.png"
-  },
-  {
-    "Title": "Holiday Run",
-    "Genre": "Brand - Brands",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "holiday-run.png"
-  },
+  { "Title": "Toyota — Toyota", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Essie — Essie", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Ralph Lauren — Virtual Chalet", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Ralph Lauren — Holiday Run", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
 
-  {
-    "Title": "Rover",
-    "Genre": "Brand - Misc",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "rover.png"
-  },
-  {
-    "Title": "Sosh",
-    "Genre": "Brand - Misc",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "sosh.png"
-  },
-  {
-    "Title": "Tophatter",
-    "Genre": "Brand - Misc",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "tophatter.png"
-  },
+  { "Title": "Rover — Rover", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Sosh — Sosh", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Tophatter — Tophatter", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
 
-  {
-    "Title": "MLB 9 Innings",
-    "Genre": "Gaming - Sports",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "mlb9innings.png"
-  },
-  {
-    "Title": "Hoops Clash",
-    "Genre": "Gaming - Sports",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "hoops-clash.png"
-  },
-  {
-    "Title": "Superhit Baseball",
-    "Genre": "Gaming - Sports",
-    "URL": "",
-    "Endpoint URL": "",
-    "thumbnail": "superhit-baseball.png"
-  }
+  { "Title": "Niantic — Pokémon GO", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Niantic — Catan World Explorers", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Scopely — Marvel Strike Force", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Scopely — Marvel Strike Force (Recruit)", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+
+  { "Title": "Paradox — Stellaris Galaxy Command", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Wizards of the Coast — Magic Spellslingers", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Wizards of the Coast — Magic Spellslingers (Ajani)", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Wizards of the Coast — Magic Arena", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+
+  { "Title": "Scopely — Looney Tunes", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Scopely — Looney Tunes (Install)", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Kongregate — Royal Idle", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Kongregate — TMNT Mutant Madness", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+
+  { "Title": "Tilting Point — Adventure Escape Mysteries", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Tilting Point — Krusty Cook-Off", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Tilting Point — Zombieland AFK Survival", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Tilting Point — Narcos Idle Cartel", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+
+  { "Title": "Jam City — Harry Potter Hogwarts Mystery", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Warner Bros — Harry Potter Wizards Unite", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Warner Bros — Game of Thrones Conquest", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+
+  { "Title": "Com2uS — MLB 9 Innings", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "YesGnome — Hoops Clash", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Hothead Games — Superhit Baseball", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+
+  { "Title": "DECA — Dragonvale", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Dreamworks — Dragons Titan Uprising", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Game Hive — Tap Titans 2", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Ludia — Jurassic World Alive", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+
+  { "Title": "Loop Games — Match 3D", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "King — Candy Crush Friends", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Microsoft — Solitaire", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Wooloo — Dominoes", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+
+  { "Title": "37 Games — Puzzles & Survival", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Ten Square — Solitaires", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Ember — Word", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Reworks — Redecor", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+
+  { "Title": "Halfdome — Pointsbet", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Florida Lottery — Florida Lottery", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Bspot — Bspot", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Skillz — Blackout Blitz", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+
+  { "Title": "Apple — Skate City", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Forza — Forza Street", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" }
 ]
