@@ -193,6 +193,9 @@
       color:#111;
       border-color: transparent;
       font-weight: 700;
+      display:flex;
+  align-items:center;
+  gap:6px;
     }
     .btn:hover{ filter: brightness(1.05); }
 
@@ -534,7 +537,7 @@
 
       const btnExternal = document.createElement('button');
       btnExternal.className = 'btn primary';
-      btnExternal.textContent = 'Open External';
+      btnExternal.innerHTML = 'Open <span style="font-weight:900;">↗</span>';
 
       header.appendChild(btnExternal);
 
