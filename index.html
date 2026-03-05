@@ -525,15 +525,10 @@
       const buttons = document.createElement('div');
       buttons.className = 'tileButtons';
 
-      const btnReload = document.createElement('button');
-      btnReload.className = 'btn';
-      btnReload.textContent = 'Reload';
-
       const btnExternal = document.createElement('button');
       btnExternal.className = 'btn primary';
       btnExternal.textContent = 'Open External';
 
-      buttons.appendChild(btnReload);
       buttons.appendChild(btnExternal);
 
       const thumbWrap = document.createElement('div');
@@ -566,11 +561,6 @@
         const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
         if (tag === 'button') return;
         openModal(item);
-      });
-
-      btnReload.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (currentModalItem && currentModalItem === item) reloadModalFrame();
       });
 
       btnExternal.addEventListener('click', (e) => {
