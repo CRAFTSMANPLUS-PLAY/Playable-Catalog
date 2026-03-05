@@ -534,12 +534,23 @@
       const buttons = document.createElement('div');
       buttons.className = 'tileButtons';
 
+      const btnPlay = document.createElement('button');
+      btnPlay.className = 'btn';
+      btnPlay.textContent = 'Play';
+      
       const btnExternal = document.createElement('button');
       btnExternal.className = 'btn primary';
       btnExternal.innerHTML = 'Open <span style="font-weight:900;">↗</span>';
+      
+      const actionWrap = document.createElement('div');
+      actionWrap.style.display = 'flex';
+      actionWrap.style.gap = '8px';
 
-      header.appendChild(btnExternal);
+      actionWrap.appendChild(btnPlay);
+      actionWrap.appendChild(btnExternal);
 
+      header.appendChild(actionWrap);
+      
       const thumbWrap = document.createElement('div');
       thumbWrap.className = 'thumbWrap';
 
@@ -573,10 +584,15 @@
       });
 
       btnExternal.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const ext = getExternal(item);
-        if (ext) window.open(ext, '_blank');
-      });
+  e.stopPropagation();
+  const ext = getExternal(item);
+  if (ext) window.open(ext, '_blank');
+});
+
+btnPlay.addEventListener('click', (e) => {
+  e.stopPropagation();
+  openModal(item);
+});
 
       return tile;
     }
