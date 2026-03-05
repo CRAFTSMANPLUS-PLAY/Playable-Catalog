@@ -32,7 +32,11 @@
   { "Title": "Sosh — Sosh", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
   { "Title": "Tophatter — Tophatter", "Genre": "Brand", "URL": "", "Endpoint URL": "", "thumbnail": "" },
 
-  { "Title": "Niantic — Pokémon GO", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
+  { "Title": "Niantic — Pokémon GO", 
+    "Genre": "Gaming", 
+    "URL": "https://play.preview.craftsmanplus.com/preview/?playable=ATtIV70kACD%2FBNFMsrtR505%2F1084228971&companyId=ATtIV70kACD&creativeId=BNFMsrtR505&name=Niantic%20-%20Pokemon%20GO&portrait=true&ratio=2:1", 
+    "Endpoint URL": "https://endpoints.prod.craftsmanplus.com/previews/ATtIV70kACD/BNFMsrtR505/1084228971/index.html", 
+    "thumbnail": "pokemon-go.png" },
   { "Title": "Niantic — Catan World Explorers", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
   { "Title": "Scopely — Marvel Strike Force", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
   { "Title": "Scopely — Marvel Strike Force (Recruit)", "Genre": "Gaming", "URL": "", "Endpoint URL": "", "thumbnail": "" },
