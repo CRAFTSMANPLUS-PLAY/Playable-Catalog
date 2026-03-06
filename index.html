@@ -426,9 +426,10 @@
     function getTitle(item){
       return norm(item.Title || item.title || item['Playable Title'] || '');
     }
-    function getGenre(item){
-      return lower(item.Genre);
-    }
+   function getGenre(item){
+  // Accept Genre / genre / "Genre " (odd keys) and normalize
+  return lower(item.Genre || item.genre || item["Genre "] || item["genre "]);
+}
 
     async function loadData(){
       const r = await fetch(JSON_PATH + '?_=' + Date.now());
@@ -436,11 +437,11 @@
       allItems = await r.json();
 
       allItems = allItems
-        .map(x => ({
-          ...x,
-          Genre: lower(x.Genre) === 'brand' ? 'brand' : (lower(x.Genre) === 'gaming' ? 'gaming' : lower(x.Genre))
-        }))
-        .filter(x => x.Genre === 'brand' || x.Genre === 'gaming');
+  .map(x => {
+    const g = lower(x.Genre || x.genre || x["Genre "] || x["genre "]);
+    return { ...x, Genre: (g === 'brand' ? 'brand' : (g === 'gaming' ? 'gaming' : g)) };
+  })
+  .filter(x => x.Genre === 'brand' || x.Genre === 'gaming');
 
       buildCompanyDropdown(allItems);
       applyFilters();
