@@ -232,12 +232,20 @@
 "thumbnail":"magic-spellslingers.png"
 },
 {
-"Title":"Marvel Strike Force",
+"Title":"Marvel Strike Force - Iron Man",
+"Company":"Scopely",
+"Genre":"Gaming",
+"URL":"https://play.preview.craftsmanplus.com/preview/?playable=https://production-static-playables.s3.amazonaws.com/test/121scopely/ironman/10/index.html?portrait=true",
+"Endpoint URL":"https://production-static-playables.s3.amazonaws.com/test/121scopely/ironman/10/index.html?portrait=true",
+"thumbnail":"marvel-strike-force.png"
+},
+{
+"Title":"Marvel Strike Force - Captian America",
 "Company":"Scopely",
 "Genre":"Gaming",
 "URL":"https://play.preview.craftsmanplus.com/preview/?playable=https://production-static-playables.s3.amazonaws.com/test/121scopely/captainamerica/4/index.html?portrait=true",
-"Endpoint URL":"https://production-static-playables.s3.amazonaws.com/test/121scopely/captainamerica/4/index.html",
-"thumbnail":"marvel-strike-force.png"
+"Endpoint URL":"https://production-static-playables.s3.amazonaws.com/test/121scopely/captainamerica/4/index.html?portrait=true",
+"thumbnail":"marvel-captian-america.png"
 },
 {
 "Title":"Match 3D",
@@ -487,13 +495,28 @@
 "Endpoint URL":"https://production-static-playables.s3.amazonaws.com/test/68paradoxstellaris/12/index.html?portrait=true",
 "thumbnail":"stellaris-galaxy-command.png"
 },
-  
 {
-"Title":"",
-"Company":"",
+"Title":"Solitales",
+"Company":"Ten Square",
 "Genre":"Gaming",
-"URL":"",
-"Endpoint URL":"",
-"thumbnail":".png"
+"URL":"https://play.preview.craftsmanplus.com/preview/?playable=https://production-static-playables.s3.amazonaws.com/test/84tensquaresolitales/35/index.html?portrait=true",
+"Endpoint URL":"https://production-static-playables.s3.amazonaws.com/test/84tensquaresolitales/35/index.html",
+"thumbnail":"solitales.png"
 },
+{
+"Title":"Kongregate",
+"Company":"Royal Idle",
+"Genre":"Gaming",
+"URL":"https://play.preview.craftsmanplus.com/?playable=https://production-static-playables.s3.amazonaws.com/test/86kongregate/9/index.html?portrait=true",
+"Endpoint URL":"https://production-static-playables.s3.amazonaws.com/test/86kongregate/9/index.html?portrait=true",
+"thumbnail":"royal-idle.png"
+},
+{
+"Title":"SpellSlingers",
+"Company":"Magic",
+"Genre":"Gaming",
+"URL":"https://play.preview.craftsmanplus.com/preview/?playable=https://production-static-playables.s3.amazonaws.com/test/70wizardsmagicspellslingers/test2_c2/7/index.html?portrait=true",
+"Endpoint URL":"https://production-static-playables.s3.amazonaws.com/test/70wizardsmagicspellslingers/test2_c2/7/index.html?portrait=true",
+"thumbnail":"magic-ajani.png"
+}
 ]
