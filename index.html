@@ -515,8 +515,9 @@
 
       brandSection.style.display = (genreSelect.value === 'gaming') ? 'none' : '';
       gamingSection.style.display = (genreSelect.value === 'brand') ? 'none' : '';
-
+      
       for(const item of brand) brandGrid.appendChild(makeTile(item));
+      for(const item of gaming) gamingGrid.appendChild(makeTile(item));
     }
 
     function makeTile(item){
