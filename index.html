@@ -591,7 +591,6 @@
     <div class="nav-right">
       <select id="sectionSelect" class="nav-select">
         <option value="all">All sections</option>
-        <option value="rmg">RMG</option>
         <option value="brand">Brand</option>
         <option value="gaming">Gaming</option>
       </select>
@@ -610,18 +609,6 @@
 
   <!-- CONTENT -->
   <div class="content">
-
-    <!-- RMG -->
-    <div class="section" id="rmgSection">
-      <div class="section-header">
-        <span class="section-label standouts">★ RMG</span>
-        <div class="section-rule standouts"></div>
-        <span class="section-count" id="rmgCount"></span>
-      </div>
-      <div class="catalog-grid" id="rmgGrid">
-        <div class="empty-state" id="rmgEmpty"><p>No results.</p></div>
-      </div>
-    </div>
 
     <!-- BRAND -->
     <div class="section" id="brandSection">
@@ -691,6 +678,12 @@
   </footer>
 
   <script>
+  // ─────────────────────────────────────────────────────────────
+  // STANDOUTS — 11 featured entries (hardcoded)
+  // ─────────────────────────────────────────────────────────────
+  const STANDOUTS = [
+  ];
+
   // ─────────────────────────────────────────────────────────────
   // CONFIG — matches existing Playable Catalog JSON structure
   // ─────────────────────────────────────────────────────────────
@@ -787,13 +780,7 @@
     return card;
   }
 
-  // ─────────────────────────────────────────────────────────────
-  // RMG grid elements (populated from JSON after load)
-  // ─────────────────────────────────────────────────────────────
-  const rmgGrid    = document.getElementById('rmgGrid');
-  const rmgSection = document.getElementById('rmgSection');
-  const rmgCount   = document.getElementById('rmgCount');
-  const rmgEmpty   = document.getElementById('rmgEmpty');
+
 
   // ─────────────────────────────────────────────────────────────
   // LOAD JSON + RENDER BRAND/GAMING
@@ -813,8 +800,8 @@
     if (!r.ok) throw new Error('Could not load: ' + JSON_PATH);
     allItems = await r.json();
     allItems = allItems
-      .map(x => ({ ...x, Genre: (() => { const g = lower(x.Genre || x.genre || x['Genre '] || x['genre ']); return g === 'brand' ? 'brand' : g === 'gaming' ? 'gaming' : g === 'rmg' ? 'rmg' : g; })() }))
-      .filter(x => x.Genre === 'brand' || x.Genre === 'gaming' || x.Genre === 'rmg');
+      .map(x => ({ ...x, Genre: (() => { const g = lower(x.Genre || x.genre || x['Genre '] || x['genre ']); return g === 'brand' ? 'brand' : g === 'gaming' ? 'gaming' : g; })() }))
+      .filter(x => x.Genre === 'brand' || x.Genre === 'gaming');
 
     buildCompanyDropdown();
     renderJsonItems();
@@ -835,25 +822,13 @@
     const co = activeCompany;
 
     // Clear existing cards (keep empty state divs)
-    [...rmgGrid.children].forEach(c   => { if (!c.classList.contains('empty-state')) c.remove(); });
     [...brandGrid.children].forEach(c => { if (!c.classList.contains('empty-state')) c.remove(); });
     [...gamingGrid.children].forEach(c=> { if (!c.classList.contains('empty-state')) c.remove(); });
 
-    const rmg    = allItems.filter(x => x.Genre === 'rmg');
     const brand  = allItems.filter(x => x.Genre === 'brand');
     const gaming = allItems.filter(x => x.Genre === 'gaming');
 
-    let rCount = 0, bCount = 0, gCount = 0;
-
-    rmg.forEach(item => {
-      const company = getCompany(item);
-      const title   = getTitle(item);
-      if (q && !lower(company).includes(q) && !lower(title).includes(q)) return;
-      if (co && company !== co) return;
-      const card = makeCard(company, title, 'thumbnails/' + item.thumbnail, 'RMG', [], true, () => openModalJson(item));
-      rmgGrid.appendChild(card);
-      rCount++;
-    });
+    let bCount = 0, gCount = 0;
 
     brand.forEach(item => {
       const company = getCompany(item);
@@ -875,10 +850,8 @@
       gCount++;
     });
 
-    rmgCount.textContent    = `${rCount} playable${rCount !== 1 ? 's' : ''}`;
     brandCount.textContent  = `${bCount} playable${bCount !== 1 ? 's' : ''}`;
     gamingCount.textContent = `${gCount} playable${gCount !== 1 ? 's' : ''}`;
-    rmgEmpty.classList.toggle('show',   rCount === 0);
     brandEmpty.classList.toggle('show', bCount === 0);
     gamingEmpty.classList.toggle('show',gCount === 0);
   }
@@ -902,10 +875,8 @@
   });
 
   function applyFilters() {
-    // Show/hide sections based on active filter
-    rmgSection.style.display    = (activeSection === 'brand' || activeSection === 'gaming') ? 'none' : '';
-    brandSection.style.display  = (activeSection === 'gaming' || activeSection === 'rmg')   ? 'none' : '';
-    gamingSection.style.display = (activeSection === 'brand'  || activeSection === 'rmg')   ? 'none' : '';
+    brandSection.style.display  = activeSection === 'gaming' ? 'none' : '';
+    gamingSection.style.display = activeSection === 'brand'  ? 'none' : '';
     renderJsonItems();
   }
 
@@ -946,7 +917,7 @@
     const company    = getCompany(item);
     const title      = getTitle(item);
     const genre      = getGenre(item);
-    const cat        = genre === 'rmg' ? 'RMG' : genre === 'brand' ? 'Brand' : 'Gaming';
+    const cat        = genre === 'brand' ? 'Brand' : 'Gaming';
     const endpoint   = getEndpoint(item);            // Endpoint URL → iframe
     const externalUrl= getExternal(item) || endpoint; // URL field → Open External button
     const titleText  = `${company}${title ? ' — ' + title : ''}`;
