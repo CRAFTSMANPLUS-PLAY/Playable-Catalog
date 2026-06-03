@@ -3,674 +3,986 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#09090B" />
   <title>CRAFTSMAN+ • Playable Catalog</title>
 
   <style>
-    :root{
-      --bg:#0b0c0d;
-      --panel:#111214;
-      --tile:#141518;
-      --tileBorder: rgba(255,255,255,.10);
-      --text:#fff;
-      --muted: rgba(255,255,255,.55);
-      --muted2: rgba(255,255,255,.35);
-      --orange:#ff6a00;
-      --orange2:#ff7a1a;
-      --radius: 16px;
+    :root {
+      --bg:          #09090B;
+      --bg-raised:   #111113;
+      --surface:     #18181B;
+      --surface-2:   #1F1F23;
+      --surface-3:   #27272A;
+      --border:      #27272A;
+      --border-2:    #3F3F46;
+      --text:        #FAFAFA;
+      --text-2:      #A1A1AA;
+      --text-3:      #52525B;
+      --orange:      #F86400;
+      --orange-soft: #FF8C38;
+      --orange-dim:  #2C1500;
+      --amber:       #F59E0B;
+      --amber-dim:   #1C1000;
+      --blue:        #60A5FA;
+      --blue-dim:    #0C1A2E;
+      --emerald:     #34D399;
+      --emerald-dim: #051A10;
+      --radius:      6px;
+      --radius-lg:   10px;
+      --trans:       0.16s cubic-bezier(0.4,0,0.2,1);
+      --font:        'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --serif:       'Playfair Display', Georgia, serif;
     }
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      background:
-        radial-gradient(1200px 600px at 50% -50%, rgba(255,106,0,.18), transparent 60%),
-        radial-gradient(900px 500px at 15% -40%, rgba(255,255,255,.08), transparent 55%),
-        var(--bg);
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Inter", Roboto, sans-serif;
+      font-family: var(--font);
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
       min-height: 100vh;
     }
 
-    /* TOP BAR */
-    .topbar{
+    /* ── NAV ─────────────────────────────────────────────────── */
+    nav {
       position: sticky;
-      top:0;
-      z-index:10;
-      height: 72px;
-      display:flex;
-      align-items:center;
-      gap:16px;
-      padding: 0 22px;
-      background: rgba(10,10,10,.82);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width: 220px;
-    }
-    .brand .logo{
-      font-weight: 800;
-      letter-spacing: .12em;
-      font-size: 16px;
-    }
-    .brand .logo .plus{
-      color: var(--orange);
-      margin-left: 2px;
+      top: 0;
+      z-index: 50;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+      justify-content: space-between;
+      background: rgba(9,9,11,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
     }
 
-    .searchwrap{
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-wordmark {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .nav-sep { width: 1px; height: 16px; background: var(--border-2); }
+    .nav-sub {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      font-weight: 500;
+    }
+
+    .nav-search {
       flex: 1;
-      display:flex;
-      justify-content:center;
-    }
-    .search{
-      width: min(720px, 100%);
+      max-width: 400px;
       position: relative;
+      display: flex;
+      align-items: center;
     }
-    .search input{
-      width:100%;
-      height: 44px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.04);
+    .nav-search-icon {
+      position: absolute;
+      left: 10px;
+      color: var(--text-3);
+      pointer-events: none;
+      display: flex;
+    }
+    .nav-search input {
+      width: 100%;
+      font-family: var(--font);
+      font-size: 13px;
       color: var(--text);
-      padding: 0 14px;
-      font-size: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border-2);
+      border-radius: 100px;
+      padding: 6px 12px 6px 30px;
       outline: none;
+      transition: all var(--trans);
     }
-    .search input::placeholder{ color: rgba(255,255,255,.35); }
+    .nav-search input::placeholder { color: var(--text-3); }
+    .nav-search input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 2px rgba(248,100,0,0.15);
+    }
 
-    .filters{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width: 360px;
-      justify-content:flex-end;
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
     }
-    .select, .companySelect{
-      height: 44px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      padding: 0 12px;
-      font-size: 14px;
+    .nav-select {
+      font-family: var(--font);
+      font-size: 12px;
+      color: var(--text-2);
+      background: var(--surface);
+      border: 1px solid var(--border-2);
+      border-radius: 100px;
+      padding: 5px 12px;
       outline: none;
       cursor: pointer;
+      transition: all var(--trans);
     }
-    .companySelect{ width: 220px; }
-    .select{ width: 120px; }
+    .nav-select:focus { border-color: var(--orange); }
 
-    /* SECTION HEADERS */
-    .content{
-      padding: 28px 22px 42px;
+    /* ── HERO ────────────────────────────────────────────────── */
+    .hero {
+      padding: 56px 28px 44px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
     }
-    .sectionTitle{
-      margin: 26px 0 14px;
-      font-size: 12px;
-      letter-spacing: .22em;
-      color: rgba(255,255,255,.35);
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: -60px;
+      width: 560px; height: 360px;
+      background: radial-gradient(ellipse at 30% 40%, rgba(248,100,0,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-    }
-
-    /* GRID */
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(5, minmax(0px, 1fr));
-      gap: 18px;
-    }
-    @media (max-width:1400px){
-  .grid{
-    grid-template-columns: repeat(4, minmax(0,1fr));
-  }
-}
-
-@media (max-width:1100px){
-  .grid{
-    grid-template-columns: repeat(3, minmax(0,1fr));
-  }
-}
-
-@media (max-width:800px){
-  .grid{
-    grid-template-columns: repeat(2, minmax(0,1fr));
-  }
-}
-
-@media (max-width:500px){
-  .grid{
-    grid-template-columns: repeat(1, minmax(0,1fr));
-  }
-}
-   
-
-    /* TILE */
-    .tile{
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 18px;
-      overflow:hidden;
-      position: relative;
-      height:520px;
-      display:flex;
-      flex-direction:column;
-      box-shadow: 0 30px 90px rgba(0,0,0,.35);
-      transition: transform .15s ease, border-color .15s ease;
-    }
-    .tile:hover{
-      transform: translateY(-2px);
-      border-color: rgba(255,106,0,.55);
-    }
-    .tileHeader{
-      padding:14px 16px 10px;
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      position:relative;
-      z-index:2;
-    }
-    .company{
-      font-weight: 700;
-      font-size: 14px;
-      color: rgba(255,255,255,.90);
-      line-height: 1.1;
-    }
-    .title{
-      font-size: 13px;
-      color: rgba(255,255,255,.55);
-      line-height: 1.1;
-    }
-
-    .tileButtons{
-      padding: 0 16px 8px 16px;
-      display:flex;
-      gap:10px;
-      position: relative;
-      z-index: 2;
-    }
-    .btn{
-      height: 30px;
-      padding: 0 12px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,106,0,.6);
-      background: transparent;
       color: var(--orange);
-      font-size: 12px;
-      cursor:pointer;
+      font-weight: 500;
+      margin-bottom: 16px;
     }
-    .btn.primary{
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 20px; height: 1px;
       background: var(--orange);
-      color:#111;
-      border-color: transparent;
+      opacity: 0.7;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(34px, 5vw, 58px);
       font-weight: 700;
-      display:flex;
-  align-items:center;
-  gap:6px;
+      line-height: 1.06;
+      color: var(--text);
+      max-width: 580px;
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
     }
-    .btn:hover{ filter: brightness(1.05); }
-
-    .thumbWrap{
-      position:relative;
-      width:100%;
-      height:380px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin-top:6px;
-      overflow:hidden;
-      z-index:1;
+    .hero-title em { font-style: italic; color: var(--orange); }
+    .hero-body {
+      font-size: 15px;
+      color: var(--text-2);
+      max-width: 500px;
+      line-height: 1.7;
+      font-weight: 300;
     }
 
-    .thumbImg{
-      width:210px;
-      height:374px;
-      object-fit:cover;
-      border-radius:16px;
-      opacity:.95;
-      box-shadow:0 25px 70px rgba(0,0,0,.6);
-      position:relative;
-      z-index:1;
-      transition: transform .25s ease;
+    /* ── CONTENT ─────────────────────────────────────────────── */
+    .content { padding: 0 28px 80px; }
+
+    /* ── SECTION ─────────────────────────────────────────────── */
+    .section { padding-top: 36px; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .section-label.standouts { color: var(--orange); }
+    .section-label.brand     { color: var(--text-3); }
+    .section-label.gaming    { color: var(--text-3); }
+
+    .section-rule {
+      flex: 1;
+      height: 1px;
+    }
+    .section-rule.standouts { background: linear-gradient(to right, rgba(248,100,0,0.3), transparent); }
+    .section-rule.brand     { background: var(--border); }
+    .section-rule.gaming    { background: var(--border); }
+
+    .section-count {
+      font-size: 10px;
+      color: var(--text-3);
+      letter-spacing: 0.08em;
+      flex-shrink: 0;
     }
 
-    .thumbOverlay{
-      position:absolute;
-      top:0;
-      left:0;
-      right:0;
-      height:380px;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.15),
-        rgba(0,0,0,0.6)
-      );
-      opacity:0;
-      transition:opacity .25s ease;
-      pointer-events:none;
-      z-index:2;
+    /* ── GRID ────────────────────────────────────────────────── */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 16px;
     }
 
-    .thumbWrap:hover .thumbOverlay{ opacity:1; }
-    .thumbWrap:hover .thumbImg{ transform:scale(1.03); }
-
-    .clickToPlay{
-      position:absolute;
-      inset:0;
-      top:60px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      z-index:3;
-      color:rgba(255,255,255,.9);
-      font-weight:800;
-      letter-spacing:.12em;
-      font-size:12px;
-      text-transform:uppercase;
-      opacity:0;
-      transition:opacity .2s ease;
-      pointer-events:none;
+    /* ── CARD ────────────────────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform var(--trans), box-shadow var(--trans), border-color var(--trans), background var(--trans);
     }
-    .tile:hover .clickToPlay{ opacity:1; }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(248,100,0,0.15);
+      border-color: rgba(248,100,0,0.3);
+      background: var(--surface-2);
+    }
+    .card.standout { border-top: 2px solid var(--orange); }
+    .card.standout:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(248,100,0,0.35);
+      border-color: var(--orange);
+    }
+    .card.hidden { display: none; }
 
-    /* MODAL */
-    .modalBackdrop{
+    /* Thumb */
+    .card-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9/16;
+      background: var(--surface-2);
+      overflow: hidden;
+    }
+    .card-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .card:hover .card-thumb img { transform: scale(1.04); }
+
+    .thumb-ph {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(160deg, var(--surface-2) 0%, var(--surface-3) 100%);
+    }
+    .thumb-ph svg { width: 32px; height: 32px; opacity: 0.12; color: var(--text); }
+    .thumb-ph span { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); }
+
+    .standout-badge {
+      position: absolute;
+      top: 8px; right: 8px;
+      font-size: 8px;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 7px;
+      border-radius: 100px;
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0);
+      transition: background var(--trans);
+    }
+    .card:hover .play-overlay { background: rgba(0,0,0,0.45); }
+    .play-circle {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.7);
+      transition: opacity var(--trans), transform var(--trans);
+      box-shadow: 0 2px 20px rgba(248,100,0,0.5);
+    }
+    .card:hover .play-circle { opacity: 1; transform: scale(1); }
+    .play-circle svg { width: 16px; height: 16px; fill: #fff; margin-left: 2px; }
+
+    /* Card footer */
+    .card-footer {
+      padding: 11px 13px 13px;
+      border-top: 1px solid var(--border);
+    }
+    .card-company {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 2px;
+    }
+    .card-title {
+      font-size: 11px;
+      color: var(--text-3);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ── EMPTY STATE ─────────────────────────────────────────── */
+    .empty-state {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 80px 20px;
+      display: none;
+    }
+    .empty-state.show { display: block; }
+    .empty-state p { font-size: 14px; color: var(--text-3); }
+
+    /* ── MODAL ───────────────────────────────────────────────── */
+    .overlay {
       position: fixed;
-      inset:0;
-      background: rgba(0,0,0,.62);
-      backdrop-filter: blur(4px);
-      display:none;
-      align-items:center;
-      justify-content:center;
+      inset: 0;
       z-index: 100;
+      background: rgba(0,0,0,0.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
     }
-    .modal{
-      width: min(560px, 96vw);
-      background: rgba(20,21,24,.96);
-      border: 1px solid rgba(255,255,255,.10);
+    .overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border-2);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 520px;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.4);
+      transform: translateY(18px) scale(0.97);
+      transition: transform 0.2s cubic-bezier(0.4,0,0.2,1);
+      overflow: hidden;
+    }
+    .overlay.open .modal { transform: translateY(0) scale(1); }
+
+    /* Modal top bar */
+    .modal-head {
+      padding: 13px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      background: var(--surface-2);
+    }
+    .modal-head-left { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+    .modal-cat {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 100px;
+      flex-shrink: 0;
+    }
+    .modal-cat.Casino   { color: var(--amber);   border: 1px solid rgba(245,158,11,0.4); background: var(--amber-dim); }
+    .modal-cat.Lottery  { color: var(--blue);    border: 1px solid rgba(96,165,250,0.4); background: var(--blue-dim); }
+    .modal-cat.Casual   { color: var(--emerald); border: 1px solid rgba(52,211,153,0.4); background: var(--emerald-dim); }
+    .modal-cat.Brand    { color: var(--text-2);  border: 1px solid var(--border-2);      background: var(--surface-3); }
+    .modal-cat.Gaming   { color: var(--text-2);  border: 1px solid var(--border-2);      background: var(--surface-3); }
+    .modal-cat.Gambling { color: var(--amber);   border: 1px solid rgba(245,158,11,0.4); background: var(--amber-dim); }
+    .modal-cat.Betting  { color: var(--amber);   border: 1px solid rgba(245,158,11,0.4); background: var(--amber-dim); }
+    .modal-cat.Bingo    { color: var(--emerald); border: 1px solid rgba(52,211,153,0.4); background: var(--emerald-dim); }
+    .modal-cat.RMG      { color: var(--orange);  border: 1px solid rgba(248,100,0,0.4);   background: var(--orange-dim); }
+
+    .modal-title {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .modal-close {
+      width: 28px; height: 28px;
+      border: 1px solid var(--border-2);
+      border-radius: var(--radius);
+      background: var(--surface-3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-2);
+      font-size: 17px;
+      font-family: sans-serif;
+      line-height: 1;
+      transition: all var(--trans);
+      flex-shrink: 0;
+      margin-left: 10px;
+    }
+    .modal-close:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* Modal body */
+    .modal-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      overflow: hidden;
+      min-height: 0;
+    }
+    .modal-preview {
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 24px 16px;
+      flex: 1;
+    }
+
+    /* Phone shell — clean frame, no notch */
+    .phone {
+      width: 252px;
+      height: 528px;
+      background: #0D0D0F;
       border-radius: 18px;
-      box-shadow: 0 40px 140px rgba(0,0,0,.55);
-      overflow:hidden;
+      border: 2px solid #2C2C30;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.6), 0 24px 72px rgba(0,0,0,0.7);
+      overflow: hidden;
       position: relative;
     }
-    .modalTop{
-      padding: 14px 16px 10px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      align-items:center;
-      text-align:center;
+    .phone iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* Tags row */
+    .modal-tags-row {
+      background: var(--bg);
+      padding: 0 24px 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
     }
-    .modalTitle{
-      font-size: 22px;
-      font-weight: 800;
-      color: rgba(255,255,255,.92);
-    }
-    .modalActions{
-      display:flex;
-      gap:10px;
-      justify-content:center;
+    .tag {
+      font-size: 10px;
+      color: var(--text-3);
+      background: var(--surface-3);
+      border: 1px solid var(--border-2);
+      padding: 2px 8px;
+      border-radius: 100px;
     }
 
-    .modalBody{
-      padding: 10px 16px 18px;
-      display:flex;
-      justify-content:center;
+    /* Modal footer */
+    .modal-footer {
+      background: var(--bg-raised);
+      border-top: 1px solid var(--border);
+      padding: 12px 18px;
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
     }
+    .reload-btn {
+      flex: 1;
+      background: var(--surface-2);
+      border: 1px solid var(--border-2);
+      color: var(--text-2);
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 9px 0;
+      border-radius: var(--radius);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all var(--trans);
+    }
+    .reload-btn:hover { background: var(--surface-3); color: var(--text); }
+    .open-btn {
+      flex: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      background: var(--orange);
+      color: #fff;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 9px 0;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background var(--trans), box-shadow var(--trans);
+    }
+    .open-btn:hover { background: var(--orange-soft); box-shadow: 0 0 24px rgba(248,100,0,0.4); }
+    .open-btn svg { width: 13px; height: 13px; }
 
-    .previewFrameWrap{
-      width: 350px;
-      height: 622px; /* 350 * 16/9 */
-      border-radius: 18px;
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.12);
-      background:#000;
+    /* ── FOOTER ──────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-raised);
     }
-    .previewFrameWrap iframe{
-      width:100%;
-      height:100%;
-      border:0;
-      display:block;
-      background:#000;
-    }
+    .footer-left  { font-size: 12px; color: var(--text-3); }
+    .footer-right { font-size: 11px; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; }
+    .footer-accent { color: var(--orange); opacity: 0.8; }
 
-    .hint{
-      margin-top: 10px;
-      color: rgba(255,255,255,.45);
-      font-size: 12px;
-      padding: 0 18px 16px;
-      text-align:center;
+    /* ── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      nav { padding: 0 14px; gap: 10px; }
+      .nav-sub { display: none; }
+      .hero, .content, footer { padding-left: 14px; padding-right: 14px; }
+      .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .modal-body { flex-direction: column; }
+      .nav-search { max-width: 160px; }
     }
   </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
 </head>
-
 <body>
-  <div class="topbar">
-    <div class="brand">
-      <div class="logo">CRAFTSMAN<span class="plus">+</span></div>
-    </div>
 
-    <div class="searchwrap">
-      <div class="search">
-        <input id="searchInput" type="text" placeholder="Search playable catalog..." />
-      </div>
+  <!-- NAV -->
+  <nav>
+    <a class="nav-brand" href="#">
+      <span class="nav-wordmark">CRAFTSMAN+</span>
+      <div class="nav-sep"></div>
+      <span class="nav-sub">Playable Catalog</span>
+    </a>
+    <div class="nav-search">
+      <span class="nav-search-icon">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+          <circle cx="5.5" cy="5.5" r="4" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M9 9L12 12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <input id="searchInput" type="text" placeholder="Search catalog…" />
     </div>
-
-    <div class="filters">
-      <select id="genreSelect" class="select" aria-label="Genre">
-        <option value="all">All</option>
+    <div class="nav-right">
+      <select id="sectionSelect" class="nav-select">
+        <option value="all">All sections</option>
+        <option value="rmg">RMG</option>
         <option value="brand">Brand</option>
         <option value="gaming">Gaming</option>
       </select>
-
-      <select id="companySelect" class="companySelect" aria-label="Company">
-        <option value="">Company</option>
+      <select id="companySelect" class="nav-select">
+        <option value="">All clients</option>
       </select>
     </div>
-  </div>
+  </nav>
 
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Interactive · Playable · HTML5</p>
+    <h1 class="hero-title">Built to <em>perform.</em><br>Ready to deploy.</h1>
+    <p class="hero-body">A set of playable ad experiences across casino, lottery, casual gaming, and beyond — built on CRAFTSMAN PLAY.</p>
+  </section>
+
+  <!-- CONTENT -->
   <div class="content">
-    <div id="brandSection">
-      <div class="sectionTitle">Brand</div>
-      <div id="brandGrid" class="grid"></div>
+
+    <!-- RMG -->
+    <div class="section" id="rmgSection">
+      <div class="section-header">
+        <span class="section-label standouts">★ RMG</span>
+        <div class="section-rule standouts"></div>
+        <span class="section-count" id="rmgCount"></span>
+      </div>
+      <div class="catalog-grid" id="rmgGrid">
+        <div class="empty-state" id="rmgEmpty"><p>No results.</p></div>
+      </div>
     </div>
 
-    <div id="gamingSection">
-      <div class="sectionTitle">Gaming</div>
-      <div id="gamingGrid" class="grid"></div>
+    <!-- BRAND -->
+    <div class="section" id="brandSection">
+      <div class="section-header">
+        <span class="section-label brand">Brand</span>
+        <div class="section-rule brand"></div>
+        <span class="section-count" id="brandCount"></span>
+      </div>
+      <div class="catalog-grid" id="brandGrid">
+        <div class="empty-state" id="brandEmpty"><p>No results.</p></div>
+      </div>
     </div>
+
+    <!-- GAMING -->
+    <div class="section" id="gamingSection">
+      <div class="section-header">
+        <span class="section-label gaming">Gaming</span>
+        <div class="section-rule gaming"></div>
+        <span class="section-count" id="gamingCount"></span>
+      </div>
+      <div class="catalog-grid" id="gamingGrid">
+        <div class="empty-state" id="gamingEmpty"><p>No results.</p></div>
+      </div>
+    </div>
+
   </div>
 
   <!-- MODAL -->
-  <div id="modalBackdrop" class="modalBackdrop" role="dialog" aria-modal="true">
-    <div class="modal" id="modal">
-      <div class="modalTop">
-        <div class="modalTitle" id="modalTitle">—</div>
-        <div class="modalActions">
-          <button class="btn" id="modalReload">Reload</button>
-          <button class="btn primary" id="modalExternal">Open External</button>
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-head">
+        <div class="modal-head-left">
+          <span class="modal-cat" id="mCat"></span>
+          <span class="modal-title" id="mTitle"></span>
         </div>
+        <button class="modal-close" id="mClose" aria-label="Close">×</button>
       </div>
-
-      <div class="modalBody">
-        <div class="previewFrameWrap">
-          <iframe id="modalFrame" src=""></iframe>
+      <div class="modal-body">
+        <div class="modal-preview">
+          <div class="phone">
+            <iframe id="mIframe" title="Playable Preview" allow="autoplay; fullscreen" loading="lazy"></iframe>
+          </div>
         </div>
+        <div class="modal-tags-row" id="mTags"></div>
       </div>
-
-      <div class="hint" id="modalHint"></div>
+      <div class="modal-footer">
+        <button class="reload-btn" id="mReload">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <path d="M2 7.5A4.5 4.5 0 1 0 3.5 4M2 2v2.5H4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Reload
+        </button>
+        <a class="open-btn" id="mExternal" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 13 13" fill="none">
+            <path d="M2 11L11 2M11 2H6.5M11 2V6.5" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Open External
+        </a>
+      </div>
     </div>
   </div>
 
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-left">© 2026 CRAFTSMAN+. All rights reserved.</span>
+    <span class="footer-right"><span class="footer-accent">CRAFTSMAN+</span> · Playable Catalog</span>
+  </footer>
+
   <script>
-    const JSON_PATH = 'Playable_Endpoint_URLs.json';
-    const THUMB_BASE = 'thumbnails/';
+  // ─────────────────────────────────────────────────────────────
+  // CONFIG — matches existing Playable Catalog JSON structure
+  // ─────────────────────────────────────────────────────────────
+  const JSON_PATH  = 'Playable_Endpoint_URLs.json';
+  const THUMB_BASE = 'thumbnails/';
 
-    const searchInput = document.getElementById('searchInput');
-    const genreSelect = document.getElementById('genreSelect');
-    const companySelect = document.getElementById('companySelect');
+  // ─────────────────────────────────────────────────────────────
+  // HELPERS
+  // ─────────────────────────────────────────────────────────────
+  const norm  = str => (str || '').toString().trim();
+  const lower = str => norm(str).toLowerCase();
 
-    const brandGrid = document.getElementById('brandGrid');
-    const gamingGrid = document.getElementById('gamingGrid');
-    const brandSection = document.getElementById('brandSection');
-    const gamingSection = document.getElementById('gamingSection');
+  function getEndpoint(item) {
+    return norm(item['Endpoint URL'] || item.Endpoint || item.endpoint || item.endpoint_url);
+  }
+  function getExternal(item) {
+    return norm(item.URL || item.Url || item.link || item.preview || item.Preview);
+  }
+  function getThumb(item) {
+    const t = norm(item.thumbnail || item.Thumbnail);
+    if (!t) return '';
+    return t.startsWith('thumbnails/') ? t : THUMB_BASE + t;
+  }
+  function getCompany(item) {
+    return norm(item.Company || item.company || item['Company Name'] || item.Client || '');
+  }
+  function getTitle(item) {
+    return norm(item.Title || item.title || item['Playable Title'] || '');
+  }
+  function getGenre(item) {
+    return lower(item.Genre || item.genre || item['Genre '] || item['genre ']);
+  }
+  function getRawUrl(previewUrl) {
+    try {
+      const u = new URL(previewUrl);
+      const p = u.searchParams.get('playable');
+      if (p && p.startsWith('http')) return p;
+    } catch(_) {}
+    return previewUrl;
+  }
 
-    const modalBackdrop = document.getElementById('modalBackdrop');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalFrame = document.getElementById('modalFrame');
-    const modalReload = document.getElementById('modalReload');
-    const modalExternal = document.getElementById('modalExternal');
-    const modalHint = document.getElementById('modalHint');
+  // ─────────────────────────────────────────────────────────────
+  // STATE
+  // ─────────────────────────────────────────────────────────────
+  let allItems = [];
+  let searchTerm = '';
+  let activeSection = 'all';
+  let activeCompany = '';
 
-    let allItems = [];
-    let filteredItems = [];
-    let currentModalItem = null;
 
-    function norm(str){ return (str || '').toString().trim(); }
-    function lower(str){ return norm(str).toLowerCase(); }
 
-    function getEndpoint(item){
-      return norm(item['Endpoint URL'] || item.Endpoint || item.endpoint || item.endpoint_url);
-    }
-    function getExternal(item){
-      return norm(item.URL || item.Url || item.link || item.preview || item.Preview);
-    }
-    function getThumb(item){
-      let t = norm(item.thumbnail || item.Thumbnail);
-      if (!t) return '';
-      if (t.startsWith('thumbnails/')) return t;
-      return THUMB_BASE + t;
-    }
-    function getCompany(item){
-      return norm(item.Company || item.company || item['Company Name'] || item.Client || '');
-    }
-    function getTitle(item){
-      return norm(item.Title || item.title || item['Playable Title'] || '');
-    }
-   function getGenre(item){
-  // Accept Genre / genre / "Genre " (odd keys) and normalize
-  return lower(item.Genre || item.genre || item["Genre "] || item["genre "]);
-}
+  // ─────────────────────────────────────────────────────────────
+  // CARD BUILDER
+  // ─────────────────────────────────────────────────────────────
+  function makePlaceholder(el) {
+    el.innerHTML = '<div class="thumb-ph"><svg viewBox="0 0 32 32" fill="none"><rect x="4" y="2" width="24" height="28" rx="4" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="14" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M6 26 C9 21 12.5 18.5 16 18.5 C19.5 18.5 23 21 26 26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>No preview</span></div>';
+  }
 
-    async function loadData(){
-      const r = await fetch(JSON_PATH + '?_=' + Date.now());
-      if(!r.ok) throw new Error('Could not load JSON: ' + JSON_PATH);
-      allItems = await r.json();
+  function makeCard(company, title, thumb, category, tags, isStandout, onClickFn) {
+    const card = document.createElement('div');
+    card.className = isStandout ? 'card standout' : 'card';
+    card.dataset.company = lower(company);
+    card.dataset.title   = lower(title);
 
-      allItems = allItems
-  .map(x => {
-    const g = lower(x.Genre || x.genre || x["Genre "] || x["genre "]);
-    return { ...x, Genre: (g === 'brand' ? 'brand' : (g === 'gaming' ? 'gaming' : g)) };
-  })
-  .filter(x => x.Genre === 'brand' || x.Genre === 'gaming');
+    const thumbWrap = document.createElement('div');
+    thumbWrap.className = 'card-thumb';
 
-      buildCompanyDropdown(allItems);
-      applyFilters();
-    }
-
-    function buildCompanyDropdown(items){
-      const companies = Array.from(new Set(items.map(getCompany).filter(Boolean)))
-        .sort((a,b) => a.localeCompare(b));
-
-      companySelect.innerHTML = '<option value="">Company</option>';
-      for(const c of companies){
-        const opt = document.createElement('option');
-        opt.value = c;
-        opt.textContent = c;
-        companySelect.appendChild(opt);
-      }
-    }
-
-    function applyFilters(){
-      const q = lower(searchInput.value);
-      const g = genreSelect.value; // all | brand | gaming
-      const c = norm(companySelect.value);
-
-      filteredItems = allItems.filter(item => {
-        const matchesText =
-          !q ||
-          lower(getTitle(item)).includes(q) ||
-          lower(getCompany(item)).includes(q);
-
-        const matchesGenre =
-          g === 'all' || getGenre(item) === g;
-
-        const matchesCompany =
-          !c || getCompany(item) === c;
-
-        return matchesText && matchesGenre && matchesCompany;
-      });
-
-      render();
-    }
-
-    function render(){
-      brandGrid.innerHTML = '';
-      gamingGrid.innerHTML = '';
-
-      const brand = filteredItems.filter(x => getGenre(x) === 'brand');
-      const gaming = filteredItems.filter(x => getGenre(x) === 'gaming');
-
-      brandSection.style.display = (genreSelect.value === 'gaming') ? 'none' : '';
-      gamingSection.style.display = (genreSelect.value === 'brand') ? 'none' : '';
-      
-      for(const item of brand) brandGrid.appendChild(makeTile(item));
-      for(const item of gaming) gamingGrid.appendChild(makeTile(item));
-    }
-
-    function makeTile(item){
-      const tile = document.createElement('div');
-      tile.className = 'tile';
-
-      const header = document.createElement('div');
-      header.className = 'tileHeader';
-
-      const textWrap = document.createElement('div');
-      textWrap.style.display = 'flex';
-      textWrap.style.flexDirection = 'column';
-      textWrap.style.gap = '4px';
-      
-      const company = document.createElement('div');
-      company.className = 'company';
-      company.textContent = getCompany(item) || '—';
-      
-      const title = document.createElement('div');
-      title.className = 'title';
-      title.textContent = getTitle(item) || '—';
-      
-      textWrap.appendChild(company);
-      textWrap.appendChild(title);
-      
-      header.appendChild(textWrap);
-
-      const buttons = document.createElement('div');
-      buttons.className = 'tileButtons';
-
-      const btnPlay = document.createElement('button');
-      btnPlay.className = 'btn';
-      btnPlay.textContent = 'Play';
-      
-      const btnExternal = document.createElement('button');
-      btnExternal.className = 'btn primary';
-      btnExternal.innerHTML = 'Open <span style="font-weight:900;">↗</span>';
-      
-      const actionWrap = document.createElement('div');
-      actionWrap.style.display = 'flex';
-      actionWrap.style.gap = '8px';
-
-      actionWrap.appendChild(btnPlay);
-      actionWrap.appendChild(btnExternal);
-
-      header.appendChild(actionWrap);
-      
-      const thumbWrap = document.createElement('div');
-      thumbWrap.className = 'thumbWrap';
-
+    if (thumb) {
       const img = document.createElement('img');
-      img.className = 'thumbImg';
-      const thumb = getThumb(item);
-      img.src = thumb || '';
-      img.alt = (getTitle(item) || 'Playable') + ' thumbnail';
-      img.loading = 'lazy';
-      img.onerror = () => { img.style.display = 'none'; };
-
-      const overlay = document.createElement('div');
-      overlay.className = 'thumbOverlay';
-
+      img.src = thumb;
+      img.alt = company;
+      img.addEventListener('error', () => makePlaceholder(thumbWrap));
       thumbWrap.appendChild(img);
-      thumbWrap.appendChild(overlay);
-
-      const ctp = document.createElement('div');
-      ctp.className = 'clickToPlay';
-      ctp.textContent = 'CLICK TO PLAY';
-
-      tile.appendChild(header);
-      tile.appendChild(buttons);
-      tile.appendChild(thumbWrap);
-      tile.appendChild(ctp);
-
-      tile.addEventListener('click', (e) => {
-        const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
-        if (tag === 'button') return;
-        openModal(item);
-      });
-
-      btnExternal.addEventListener('click', (e) => {
-  e.stopPropagation();
-  const ext = getExternal(item);
-  if (ext) window.open(ext, '_blank');
-});
-
-btnPlay.addEventListener('click', (e) => {
-  e.stopPropagation();
-  openModal(item);
-});
-
-      return tile;
+    } else {
+      makePlaceholder(thumbWrap);
     }
 
-    function openModal(item){
-      currentModalItem = item;
-      modalTitle.textContent = `${getTitle(item) || 'Playable'} – ${getCompany(item) || ''}`.trim();
-
-      const endpoint = getEndpoint(item);
-      const external = getExternal(item);
-
-      modalHint.textContent = '';
-
-      if (!endpoint){
-        modalFrame.src = 'about:blank';
-        modalHint.textContent = 'Missing Endpoint URL in JSON. Add an "Endpoint URL" value for this item.';
-      } else {
-        modalFrame.src = bust(endpoint);
-      }
-
-      modalExternal.onclick = () => {
-        if (external) window.open(external, '_blank');
-      };
-      modalReload.onclick = () => reloadModalFrame();
-
-      modalBackdrop.style.display = 'flex';
+    if (isStandout) {
+      const badge = document.createElement('span');
+      badge.className = 'standout-badge';
+      badge.textContent = '★ Standout';
+      thumbWrap.appendChild(badge);
     }
 
-    function reloadModalFrame(){
-      if (!currentModalItem) return;
-      const endpoint = getEndpoint(currentModalItem);
-      if (!endpoint) return;
-      modalFrame.src = bust(endpoint);
-    }
+    thumbWrap.insertAdjacentHTML('beforeend', '<div class="play-overlay"><div class="play-circle"><svg viewBox="0 0 16 16"><path d="M4 2.5l9 5.5-9 5.5V2.5z"/></svg></div></div>');
 
-    function bust(url){
-      const join = url.includes('?') ? '&' : '?';
-      return url + join + '_=' + Date.now();
-    }
+    const footer = document.createElement('div');
+    footer.className = 'card-footer';
+    footer.innerHTML = '<p class="card-company">' + (company || '—') + '</p><p class="card-title">' + (title || '—') + '</p>';
 
-    modalBackdrop.addEventListener('click', (e) => {
-      if (e.target === modalBackdrop){
-        modalBackdrop.style.display = 'none';
-        modalFrame.src = 'about:blank';
-        currentModalItem = null;
-      }
+    card.appendChild(thumbWrap);
+    card.appendChild(footer);
+    card.addEventListener('click', onClickFn);
+    return card;
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  // RMG grid elements (populated from JSON after load)
+  // ─────────────────────────────────────────────────────────────
+  const rmgGrid    = document.getElementById('rmgGrid');
+  const rmgSection = document.getElementById('rmgSection');
+  const rmgCount   = document.getElementById('rmgCount');
+  const rmgEmpty   = document.getElementById('rmgEmpty');
+
+  // ─────────────────────────────────────────────────────────────
+  // LOAD JSON + RENDER BRAND/GAMING
+  // ─────────────────────────────────────────────────────────────
+  const brandGrid    = document.getElementById('brandGrid');
+  const gamingGrid   = document.getElementById('gamingGrid');
+  const brandSection = document.getElementById('brandSection');
+  const gamingSection= document.getElementById('gamingSection');
+  const brandCount   = document.getElementById('brandCount');
+  const gamingCount  = document.getElementById('gamingCount');
+  const brandEmpty   = document.getElementById('brandEmpty');
+  const gamingEmpty  = document.getElementById('gamingEmpty');
+  const companySelect= document.getElementById('companySelect');
+
+  async function loadData() {
+    const r = await fetch(JSON_PATH + '?_=' + Date.now());
+    if (!r.ok) throw new Error('Could not load: ' + JSON_PATH);
+    allItems = await r.json();
+    allItems = allItems
+      .map(x => ({ ...x, Genre: (() => { const g = lower(x.Genre || x.genre || x['Genre '] || x['genre ']); return g === 'brand' ? 'brand' : g === 'gaming' ? 'gaming' : g === 'rmg' ? 'rmg' : g; })() }))
+      .filter(x => x.Genre === 'brand' || x.Genre === 'gaming' || x.Genre === 'rmg');
+
+    buildCompanyDropdown();
+    renderJsonItems();
+  }
+
+  function buildCompanyDropdown() {
+    const companies = Array.from(new Set(allItems.map(getCompany).filter(Boolean))).sort();
+    companySelect.innerHTML = '<option value="">All clients</option>';
+    companies.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c; opt.textContent = c;
+      companySelect.appendChild(opt);
+    });
+  }
+
+  function renderJsonItems() {
+    const q  = searchTerm;
+    const co = activeCompany;
+
+    // Clear existing cards (keep empty state divs)
+    [...rmgGrid.children].forEach(c   => { if (!c.classList.contains('empty-state')) c.remove(); });
+    [...brandGrid.children].forEach(c => { if (!c.classList.contains('empty-state')) c.remove(); });
+    [...gamingGrid.children].forEach(c=> { if (!c.classList.contains('empty-state')) c.remove(); });
+
+    const rmg    = allItems.filter(x => x.Genre === 'rmg');
+    const brand  = allItems.filter(x => x.Genre === 'brand');
+    const gaming = allItems.filter(x => x.Genre === 'gaming');
+
+    let rCount = 0, bCount = 0, gCount = 0;
+
+    rmg.forEach(item => {
+      const company = getCompany(item);
+      const title   = getTitle(item);
+      if (q && !lower(company).includes(q) && !lower(title).includes(q)) return;
+      if (co && company !== co) return;
+      const card = makeCard(company, title, 'thumbnails/' + item.thumbnail, 'RMG', [], true, () => openModalJson(item));
+      rmgGrid.appendChild(card);
+      rCount++;
     });
 
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modalBackdrop.style.display === 'flex'){
-        modalBackdrop.style.display = 'none';
-        modalFrame.src = 'about:blank';
-        currentModalItem = null;
-      }
+    brand.forEach(item => {
+      const company = getCompany(item);
+      const title   = getTitle(item);
+      if (q && !lower(company).includes(q) && !lower(title).includes(q)) return;
+      if (co && company !== co) return;
+      const card = makeCard(company, title, getThumb(item), 'Brand', [], false, () => openModalJson(item));
+      brandGrid.appendChild(card);
+      bCount++;
     });
 
-    searchInput.addEventListener('input', applyFilters);
-    genreSelect.addEventListener('change', applyFilters);
-    companySelect.addEventListener('change', applyFilters);
-
-    loadData().catch(err => {
-      console.error(err);
-      brandGrid.innerHTML = `<div style="padding:16px;color:#ff6a00;">${err.message}</div>`;
+    gaming.forEach(item => {
+      const company = getCompany(item);
+      const title   = getTitle(item);
+      if (q && !lower(company).includes(q) && !lower(title).includes(q)) return;
+      if (co && company !== co) return;
+      const card = makeCard(company, title, getThumb(item), 'Gaming', [], false, () => openModalJson(item));
+      gamingGrid.appendChild(card);
+      gCount++;
     });
+
+    rmgCount.textContent    = `${rCount} playable${rCount !== 1 ? 's' : ''}`;
+    brandCount.textContent  = `${bCount} playable${bCount !== 1 ? 's' : ''}`;
+    gamingCount.textContent = `${gCount} playable${gCount !== 1 ? 's' : ''}`;
+    rmgEmpty.classList.toggle('show',   rCount === 0);
+    brandEmpty.classList.toggle('show', bCount === 0);
+    gamingEmpty.classList.toggle('show',gCount === 0);
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  // SECTION + SEARCH FILTERS
+  // ─────────────────────────────────────────────────────────────
+  document.getElementById('searchInput').addEventListener('input', e => {
+    searchTerm = lower(e.target.value.trim());
+    applyFilters();
+  });
+
+  document.getElementById('sectionSelect').addEventListener('change', e => {
+    activeSection = e.target.value;
+    applyFilters();
+  });
+
+  companySelect.addEventListener('change', e => {
+    activeCompany = norm(e.target.value);
+    renderJsonItems();
+  });
+
+  function applyFilters() {
+    // Show/hide sections based on active filter
+    rmgSection.style.display    = (activeSection === 'brand' || activeSection === 'gaming') ? 'none' : '';
+    brandSection.style.display  = (activeSection === 'gaming' || activeSection === 'rmg')   ? 'none' : '';
+    gamingSection.style.display = (activeSection === 'brand'  || activeSection === 'rmg')   ? 'none' : '';
+    renderJsonItems();
+  }
+
+  // ─────────────────────────────────────────────────────────────
+  // MODAL
+  // ─────────────────────────────────────────────────────────────
+  const overlay  = document.getElementById('overlay');
+  const mIframe  = document.getElementById('mIframe');
+  const mTitle   = document.getElementById('mTitle');
+  const mCat     = document.getElementById('mCat');
+  const mTags    = document.getElementById('mTags');
+  const mExternal= document.getElementById('mExternal');
+
+  function openModal(titleText, catText, tagsArr, iframeSrc, externalUrl) {
+    mTitle.textContent = titleText;
+    mCat.textContent   = catText;
+    mCat.className     = `modal-cat ${catText}`;
+    mTags.innerHTML    = tagsArr.map(t => `<span class="tag">${t}</span>`).join('');
+    mExternal.href     = externalUrl || '#';
+    mIframe.src        = getRawUrl(iframeSrc);
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openModalStandout(p) {
+    // Standouts use the full preview wrapper URL — do not strip to raw endpoint
+    mTitle.textContent = `${p.company} — ${p.title}`;
+    mCat.textContent   = p.category;
+    mCat.className     = `modal-cat ${p.category}`;
+    mTags.innerHTML    = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
+    mExternal.href     = p.previewUrl;
+    mIframe.src        = p.previewUrl;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openModalJson(item) {
+    const company  = getCompany(item);
+    const title    = getTitle(item);
+    const genre    = getGenre(item);
+    const cat      = genre === 'brand' ? 'Brand' : 'Gaming';
+    // Use URL field (full preview wrapper) for iframe — Endpoint URL for fallback only
+    const previewUrl = getExternal(item) || getEndpoint(item);
+    const titleText  = `${company}${title ? ' — ' + title : ''}`;
+
+    mTitle.textContent = titleText;
+    mCat.textContent   = cat;
+    mCat.className     = `modal-cat ${cat}`;
+    mTags.innerHTML    = '';
+    mExternal.href     = previewUrl;
+    mIframe.src        = previewUrl;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    setTimeout(() => { mIframe.src = ''; }, 220);
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('mClose').addEventListener('click', closeModal);
+  document.getElementById('mReload').addEventListener('click', () => {
+    const src = mIframe.src;
+    mIframe.src = '';
+    setTimeout(() => { mIframe.src = src; }, 80);
+  });
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // ─────────────────────────────────────────────────────────────
+  // INIT
+  // ─────────────────────────────────────────────────────────────
+  loadData().catch(err => {
+    console.error(err);
+    brandGrid.innerHTML = `<div style="padding:16px;color:var(--orange);">${err.message}</div>`;
+  });
   </script>
 </body>
 </html>
